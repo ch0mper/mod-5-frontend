@@ -1,1 +1,1 @@
-export const BLAH = 'BLAH'
+export const LOGIN = 'LOGIN'

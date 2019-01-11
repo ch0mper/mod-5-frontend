@@ -7,10 +7,13 @@ import Index from './components/Index'
 import { Login } from './components/Login';
 import Signup from './components/Signup';
 import Home from './components/Home';
+import NavBar from './components/NavBar';
 
 class App extends Component {
   render() {
     return (
+      <div>
+      < NavBar />
       <Router history={history}>
         <Switch>
           <Route path="/login" component={Login} />
@@ -19,6 +22,7 @@ class App extends Component {
           <Route path="/" component={Index} />
         </Switch>
       </Router>
+      </div>
     );
   }
 }

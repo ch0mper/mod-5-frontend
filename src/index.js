@@ -9,8 +9,8 @@ import { initialState } from './state/initial'
 import App from './App';
 
 const middleware = compose(
-    applyMiddleware(thunk),
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+  applyMiddleware(thunk),
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 )
 
 const store = createStore(reducer, initialState, middleware)
