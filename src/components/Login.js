@@ -5,9 +5,7 @@ import { actions } from '../state/actions'
 class _Login extends Component {
   render() {
     return (
-      <div>
-        <h2>should log in user and redirect to show home page with list of user's tasks</h2>
-
+      <div><br/>
         <form onSubmit={e => this.props.login(e)} >
           <div>
             <label>Email </label>

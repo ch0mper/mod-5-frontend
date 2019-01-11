@@ -1,9 +1,21 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
-const Home = () => (
-  <div>
-    <h2>homeeee</h2>
-  </div>
-);
+class _Home extends Component {
+  render() {
+    return (
+      <div>
+        <h2>homeeee</h2>
+        { this.props.firstName &&
+          <p>hi {this.props.firstName}</p>
+        }
+      </div>
+    );
+  }
+}
 
-export default Home;
+const mapStateToProps = state => ({
+  firstName: state.firstName
+})
+
+export const Home = connect(mapStateToProps)(_Home)

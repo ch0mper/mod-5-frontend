@@ -1,10 +1,25 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { connect } from 'react-redux'
+import { actions } from '../state/actions'
 
-const Signup = () => (
-  <div>
-    the sign up component, needs a form to accept email, pw, first name<br/>
-    and post to /users
-  </div>
-);
+class _Signup extends Component {
+  render() {
+    return (
+      <div><br/>
+        <form onSubmit={e => this.props.signup(e)} >
+          <div>
+            <label>Email </label>
+            <input name="emailInput" type="text" />
+          </div>
+          <div>
+            <label>Password </label>
+            <input name="passwordInput" type="password" />
+          </div>
+          <button type="submit">Let's go!</button>
+        </form>
+      </div>
+    );
+  }
+}
 
-export default Signup;
+export const Signup = connect(null, actions)(_Signup)

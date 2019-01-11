@@ -5,8 +5,9 @@ import history from './state/history'
 
 import Index from './components/Index'
 import { Login } from './components/Login';
-import Signup from './components/Signup';
-import Home from './components/Home';
+import { Signup } from './components/Signup';
+import { Home } from './components/Home';
+import Backlog from './components/Backlog';
 import NavBar from './components/NavBar';
 
 class App extends Component {
@@ -19,6 +20,7 @@ class App extends Component {
           <Route path="/login" component={Login} />
           <Route path="/signup" component={Signup} />
           <Route path="/home" component={Home} />
+          <Route path="/backlog" component={Backlog} />
           <Route path="/" component={Index} />
         </Switch>
       </Router>
