@@ -8,14 +8,15 @@ export const actions = {
       fetch('http://localhost:5000/api/user/signin',{
         method:'POST',
         headers:{
-          'Content-Type':'application/json'
+          'Content-Type':'application/json',
+          Accept: 'application/json'
         },
         body:JSON.stringify({
           email: input.target.emailInput.value,
           password: input.target.passwordInput.value
         })
       })
-      .then( res => res.json())
+      .then( res => res.json() )
       .then( result => {
         localStorage.setItem('token', result.token)
         dispatch({
@@ -34,7 +35,8 @@ export const actions = {
       fetch('http://localhost:5000/api/user/signup',{
         method:'POST',
         headers:{
-          'Content-Type':'application/json'
+          'Content-Type':'application/json',
+          Accept: 'application/json'
         },
         body:JSON.stringify({
           firstName: input.target.firstNameInput.value,
@@ -43,17 +45,21 @@ export const actions = {
         })
       })
 
-      .then( res => res.json())
+      .then( res => res.json() )
 
       .then( result => {
         localStorage.setItem('token', result.token)
         dispatch({
           type: SIGNUP,
-          payload: result.userId
+          payload: result
         })
       })
 
     }
+  },
+
+  logout(){
+    return ({ type: LOGOUT })
   }
 
   // add more actions here

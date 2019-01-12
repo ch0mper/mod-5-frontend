@@ -10,6 +10,17 @@ export const reducer = function(currentState, action){
       newState.firstName = action.payload.firstName
       history.push('/home')
     break;
+    case SIGNUP:
+      newState.currentUserId = action.payload.userId
+      newState.firstName = action.payload.firstName
+      history.push('/welcome')
+    break;
+    case LOGOUT:
+      localStorage.clear();
+      newState.currentUserId = ''
+      newState.firstName = ''
+      history.push('/home')
+    break;
     // case 'SELECT_QUESTION':
     //   history.push(`/question/${action.payload}`)
     // break;

@@ -8,6 +8,10 @@ class _Signup extends Component {
       <div><br/>
         <form onSubmit={e => this.props.signup(e)} >
           <div>
+            <label>First Name </label>
+            <input name="firstNameInput" type="text" />
+          </div>
+          <div>
             <label>Email </label>
             <input name="emailInput" type="text" />
           </div>
