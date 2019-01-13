@@ -17,7 +17,7 @@ class _NavBar extends Component {
           <div class="dropdown-content">
             <a href="/home">home</a>
             <a href="/backlog">backlog</a>
-            <a onClick={() => this.props.logout()}>log out?</a>
+            <a onClick={() => this.props.logout()}>log out</a>
           </div>
         </div>
         <div class="title">mod-5 project</div>

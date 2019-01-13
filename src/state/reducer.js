@@ -1,5 +1,5 @@
 import history from './history'
-import { LOGIN, SIGNUP, LOGOUT } from './types'
+import { LOGIN, SIGNUP, LOGOUT, GETTASKS } from './types'
 
 export const reducer = function(currentState, action){
   const newState = { ...currentState }
@@ -20,6 +20,10 @@ export const reducer = function(currentState, action){
       newState.currentUserId = ''
       newState.firstName = ''
       history.push('/home')
+    break;
+    case GETTASKS:
+      newState.tasks = action.payload
+      console.log('reducer')
     break;
     // case 'SELECT_QUESTION':
     //   history.push(`/question/${action.payload}`)

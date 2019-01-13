@@ -1,4 +1,4 @@
-import { LOGIN, SIGNUP, LOGOUT } from './types'
+import { LOGIN, SIGNUP, LOGOUT, GETTASKS } from './types'
 
 export const actions = {
 
@@ -60,6 +60,24 @@ export const actions = {
 
   logout(){
     return ({ type: LOGOUT })
+  },
+
+  getTasks(){
+    return function(dispatch, getState){
+      console.log('getting tasks...')
+
+      fetch('http://localhost:5000/api/users/:id/tasks')
+
+      .then( res => res.json() )
+
+      .then( result => {
+        dispatch({
+          type: GETTASKS,
+          payload: result
+        })
+      })
+
+    }
   }
 
   // add more actions here
