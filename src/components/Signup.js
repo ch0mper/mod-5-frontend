@@ -19,7 +19,7 @@ class _Signup extends Component {
             <label>Password </label>
             <input name="passwordInput" type="password" />
           </div>
-          <button type="submit">Let's go!</button>
+          <button type="submit" class="button">Let's go!</button>
         </form>
       </div>
     );

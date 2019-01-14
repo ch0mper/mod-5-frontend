@@ -1,6 +1,5 @@
 import React from 'react';
 import history from '../state/history'
-import '../App.css'
 
 const Index = () => (
   <div>

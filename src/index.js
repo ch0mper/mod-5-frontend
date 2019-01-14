@@ -8,7 +8,7 @@ import * as serviceWorker from './serviceWorker';
 import { reducer } from './state/reducer'
 import { initialState } from './state/initial'
 import App from './App';
-
+import './App.css'
 
 const middleware = compose(
   applyMiddleware(thunk),

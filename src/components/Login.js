@@ -15,7 +15,7 @@ class _Login extends Component {
             <label>Password </label>
             <input name="passwordInput" type="password" />
           </div>
-          <button type="submit">Login</button>
+          <button type="submit" class="button">Login</button>
         </form>
       </div>
     );
