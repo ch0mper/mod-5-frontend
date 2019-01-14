@@ -17,7 +17,7 @@ class DailyListContainer extends Component {
       <div>
         <h3>hi hi hi</h3>
         <li>some daily things</li>
-        <li>to do</li>
+        <li>to do (hard-coded)</li>
      </div>
    );
   }

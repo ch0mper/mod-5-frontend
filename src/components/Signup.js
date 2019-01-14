@@ -4,6 +4,7 @@ import { actions } from '../state/actions'
 import { Button, Container } from './UI/StyledComponents'
 
 class _Signup extends Component {
+
   render() {
     return (
       <Container>

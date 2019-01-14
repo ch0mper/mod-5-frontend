@@ -1,4 +1,4 @@
-import { LOGIN, SIGNUP, LOGOUT, GETTASKS } from './types'
+import { LOGIN, SIGNUP, LOGOUT, GET_TASKS, ADD_TASK } from './types'
 
 export const actions = {
 
@@ -76,11 +76,37 @@ export const actions = {
 
       .then( result => {
         dispatch({
-          type: GETTASKS,
+          type: GET_TASKS,
           payload: result
         })
       })
 
+    }
+  },
+
+  addTask(input, userId){
+    return function(dispatch, getState){
+      fetch('http://localhost:5000/api/tasks',{
+        method:'POST',
+        headers:{
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
+          'Content-Type':'application/json',
+          Accept: 'application/json'
+        },
+        body:JSON.stringify({
+          content: input.content,
+          userId: userId
+        })
+      })
+
+      .then( res => res.json() )
+
+      .then( result => {
+        dispatch({
+          type: ADD_TASK,
+          payload: result
+        })
+      })
     }
   }
 

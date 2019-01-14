@@ -1,27 +1,28 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
+import { actions } from '../state/actions'
 import { Button, Input } from './UI/StyledComponents'
 
 class CreateMainListItem extends Component {
 
   state = {
-    text: '',
+    content: '',
   }
 
   inputRef = React.createRef();
 
   handleSubmit = event => {
     event.preventDefault();
-    this.props.addTodo(this.state)
+    this.props.addTask(this.state, localStorage.currentUserId)
     this.setState({
-      text: ''
+      content: ''
     })
   }
 
   handleChange(event) {
     this.setState({
-      text: event.target.value
+      content: event.target.value
     });
   }
 
@@ -33,10 +34,13 @@ class CreateMainListItem extends Component {
 
           <Input
             ref={this.inputRef}
+            type="text"
             placeholder="more things"
             onMouseEnter={() => {
               this.inputRef.current.focus()
             }}
+            onChange={(event) => this.handleChange(event)}
+            value={this.state.content}
           />
 
           <Button type="submit">add!</Button>
@@ -46,8 +50,8 @@ class CreateMainListItem extends Component {
   }
 };
 
-const mapDispatchToProps = dispatch => ({
-  addTodo: formData => dispatch({ type: 'ADD_TODO', payload: formData })
-})
+// const mapDispatchToProps = dispatch => ({
+//   addTask: formData => dispatch({ type: 'ADD_TASK', payload: formData })
+// })
 
-export default connect(null, mapDispatchToProps)(CreateMainListItem);
+export default connect(null, actions)(CreateMainListItem);

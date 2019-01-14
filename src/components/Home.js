@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { actions } from '../state/actions'
 import {Grid, GridCol} from 'griz';
 
-import { Button, Container } from './UI/StyledComponents'
+import { Container } from './UI/StyledComponents'
 import MainListContainer from './MainListContainer';
 import DailyListContainer from './DailyListContainer';
 
@@ -22,12 +22,13 @@ class _Home extends Component {
           <p>hi {localStorage.firstName} !!!!!!!!!</p>
         }
       <Grid>
-        <GridCol>
+        <GridCol column="48">
           <div class='list-card'>
           < DailyListContainer />
           </div>
         </GridCol>
-        <GridCol>
+
+        <GridCol column="48">
           <div class='list-card'>
             <h4>all the things</h4>
             { this.props.tasks &&
