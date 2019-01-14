@@ -21,8 +21,9 @@ class _NavBar extends Component {
           </div>
         </div>
         <div class="title">mod-5 project</div>
-        { this.props.firstName &&
-            <div class="title">{this.props.firstName}</div>
+        { localStorage.token ?
+            <div>logged in as {this.props.firstName}</div>
+          : <div>logged out</div>
         }
         {/* {`${!params.id ? 'Create' : 'Update'}`} User */}
       </div>

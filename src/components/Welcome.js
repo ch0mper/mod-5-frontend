@@ -5,8 +5,13 @@ class _Welcome extends Component {
   render() {
     return (
       <div>
+      { localStorage.token ?
+      <div>
         <h2>welcome for new sign ups</h2>
         <p>hi {this.props.firstName}</p>
+      </div>
+      : <h3>must be logged in :)</h3>
+      }
       </div>
     );
   }

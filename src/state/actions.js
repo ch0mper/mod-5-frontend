@@ -62,11 +62,11 @@ export const actions = {
     return ({ type: LOGOUT })
   },
 
-  getTasks(){
+  getTasks(userId){
     return function(dispatch, getState){
-      console.log('getting tasks...')
+      console.log('getting tasks for...', userId)
 
-      fetch('http://localhost:5000/api/users/:id/tasks')
+      fetch(`http://localhost:5000/api/users/${userId}/tasks`)
 
       .then( res => res.json() )
 
