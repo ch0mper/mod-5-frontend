@@ -1,5 +1,5 @@
 import history from './history'
-import { LOGIN, SIGNUP, LOGOUT, GET_TASKS, ADD_TASK } from './types'
+import { LOGIN, SIGNUP, LOGOUT, GET_TASKS, ADD_TASK, TOGGLE_TASK } from './types'
 
 export const reducer = function(currentState, action){
   const newState = { ...currentState }
@@ -25,6 +25,12 @@ export const reducer = function(currentState, action){
     break;
     case ADD_TASK:
       newState.tasks = [...newState.tasks, action.payload]
+    break;
+    case TOGGLE_TASK:
+      return newState.map(
+        task =>
+          task.id === action.id ? { ...task, completed: !task.completed } : task
+      )
     break;
     // case 'SELECT_QUESTION':
     //   history.push(`/question/${action.payload}`)

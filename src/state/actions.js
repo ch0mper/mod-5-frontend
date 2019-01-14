@@ -1,4 +1,4 @@
-import { LOGIN, SIGNUP, LOGOUT, GET_TASKS, ADD_TASK } from './types'
+import { LOGIN, SIGNUP, LOGOUT, GET_TASKS, ADD_TASK, TOGGLE_TASK } from './types'
 
 export const actions = {
 
@@ -95,7 +95,8 @@ export const actions = {
         },
         body:JSON.stringify({
           content: input.content,
-          userId: userId
+          userId: userId,
+          completed: false
         })
       })
 
@@ -108,6 +109,11 @@ export const actions = {
         })
       })
     }
+  },
+
+  toggleTodo(id){
+    return({type: TOGGLE_TASK,
+    id})
   }
 
   // add more actions here

@@ -6,6 +6,7 @@ import {Grid, GridCol} from 'griz';
 import { Container } from './UI/StyledComponents'
 import MainListContainer from './MainListContainer';
 import DailyListContainer from './DailyListContainer';
+import { TodaysDate } from './TodaysDate';
 
 class _Home extends Component {
 
@@ -16,11 +17,14 @@ class _Home extends Component {
   render() {
     console.log('tasks', this.props.tasks)
     return (
+      <div>
       <Container>
         <h2>/home</h2>
+        < TodaysDate />
         { localStorage.token &&
           <p>hi {localStorage.firstName} !!!!!!!!!</p>
         }
+      </Container>
       <Grid>
         <GridCol column="48">
           <div class='list-card'>
@@ -37,7 +41,7 @@ class _Home extends Component {
           </div>
         </GridCol>
       </Grid>
-      </Container>
+      </div>
     );
   }
 }
