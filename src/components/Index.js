@@ -1,14 +1,13 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
+import history from '../state/history'
+import { Button, Container } from './UI/StyledComponents'
 
 const Index = () => (
-  <div>
-    <h1>the index</h1>
-    <p>(still index) info about this project and what it does</p>
-    <button><Link to='/login'>log in</Link></button>
-    <button><Link to='/signup'>create account</Link></button>
-    {/* {`${!params.id ? 'Create' : 'Update'}`} User */}
-  </div>
+  <Container>
+    <p><b>index.js: </b> info about this project and what it does</p>
+    <Button onClick={() => history.push('/login')}>log in</Button>
+    <Button onClick={() => history.push('/signup')}>create account</Button>
+  </Container>
 );
 
 export default Index;

@@ -1,0 +1,39 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+* {
+  font-family: 'Roboto', sans-serif;
+}
+
+.button {
+  padding: 5px 15px;
+  margin: 5px;
+  font-size: 12px;
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+  color: #fff;
+  background-color: #aaaaaa;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 2px 2px 1px #ebebeb;
+  cursor: pointer;
+}
+
+.button:hover {background-color: #808080}
+
+.button:active {
+  background-color: #808080;
+  box-shadow: 2px 2px 1px #ebebeb;
+  transform: translateY(2px);
+}
+
+.list-card {
+  border-style: solid;
+  border-color: #d0d0d0;
+  box-shadow: 3px 3px 2px #ebebeb;
+  margin: 10px;
+  padding: 10px;
+}

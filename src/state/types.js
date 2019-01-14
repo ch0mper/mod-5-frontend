@@ -1,0 +1,6 @@
+export const LOGIN = 'LOGIN'
+export const SIGNUP = 'SIGNUP'
+export const LOGOUT = 'LOGOUT'
+export const GET_TASKS = 'GET_TASKS'
+export const ADD_TASK = 'ADD_TASK'
+export const TOGGLE_TASK = 'TOGGLE_TASK'

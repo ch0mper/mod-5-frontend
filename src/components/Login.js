@@ -1,9 +1,27 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { connect } from 'react-redux'
+import { actions } from '../state/actions'
+import { Button, Container } from './UI/StyledComponents'
 
-const Login = () => (
-  <div>
-    the login component, will have a form to accept email and pw, then logs them in and shows home page
-  </div>
-);
+class _Login extends Component {
 
-export default Login;
+  render() {
+    return (
+      <Container>
+        <form onSubmit={e => this.props.login(e)} >
+          <div>
+            <label>Email </label>
+            <input name="emailInput" type="text" />
+          </div>
+          <div>
+            <label>Password </label>
+            <input name="passwordInput" type="password" />
+          </div>
+          <Button type="submit">Login</Button>
+        </form>
+      </Container>
+    );
+  }
+}
+
+export const Login = connect(null, actions)(_Login)
