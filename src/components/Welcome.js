@@ -8,7 +8,7 @@ class _Welcome extends Component {
       { localStorage.token ?
       <div>
         <h2>welcome for new sign ups</h2>
-        <p>hi {this.props.firstName}</p>
+        <p>hi {localStorage.firstName}</p>
       </div>
       : <h3>must be logged in :)</h3>
       }

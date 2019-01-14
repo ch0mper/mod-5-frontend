@@ -64,9 +64,13 @@ export const actions = {
 
   getTasks(userId){
     return function(dispatch, getState){
-      console.log('getting tasks for...', userId)
-
-      fetch(`http://localhost:5000/api/users/${userId}/tasks`)
+      fetch(`http://localhost:5000/api/users/${userId}/tasks`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        }
+      })
 
       .then( res => res.json() )
 

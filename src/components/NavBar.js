@@ -21,18 +21,13 @@ class _NavBar extends Component {
           </div>
         </div>
         <div class="title">mod-5 project</div>
-        { localStorage.token ?
-            <div>logged in as {this.props.firstName}</div>
+        { localStorage.firstName ?
+            <div>logged in as {localStorage.firstName}</div>
           : <div>logged out</div>
         }
-        {/* {`${!params.id ? 'Create' : 'Update'}`} User */}
       </div>
     );
   }
 }
 
-const mapStateToProps = state => ({
-  firstName: state.firstName
-})
-
-export const NavBar = connect(mapStateToProps, actions)(_NavBar)
+export const NavBar = connect(null, actions)(_NavBar)

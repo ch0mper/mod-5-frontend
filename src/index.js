@@ -4,9 +4,11 @@ import { createStore, compose, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
 import thunk from 'redux-thunk'
 import * as serviceWorker from './serviceWorker';
+
 import { reducer } from './state/reducer'
 import { initialState } from './state/initial'
 import App from './App';
+
 
 const middleware = compose(
   applyMiddleware(thunk),
