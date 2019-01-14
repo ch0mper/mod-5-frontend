@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { actions } from '../state/actions'
+import {Grid, GridCol} from 'griz';
 
+import { Button, Container } from './UI/StyledComponents'
 import MainListContainer from './MainListContainer';
+import DailyListContainer from './DailyListContainer';
 
 class _Home extends Component {
 
@@ -13,18 +16,27 @@ class _Home extends Component {
   render() {
     console.log('tasks', this.props.tasks)
     return (
-      <div>
+      <Container>
         <h2>/home</h2>
         { localStorage.token &&
           <p>hi {localStorage.firstName} !!!!!!!!!</p>
         }
-        <div class='list-card'>
-        <h4>all the things</h4>
-        { this.props.tasks &&
-        < MainListContainer tasks={this.props.tasks} />
-        }
-        </div>
-      </div>
+      <Grid>
+        <GridCol>
+          <div class='list-card'>
+          < DailyListContainer />
+          </div>
+        </GridCol>
+        <GridCol>
+          <div class='list-card'>
+            <h4>all the things</h4>
+            { this.props.tasks &&
+            < MainListContainer tasks={this.props.tasks} />
+            }
+          </div>
+        </GridCol>
+      </Grid>
+      </Container>
     );
   }
 }

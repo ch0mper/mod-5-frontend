@@ -21,9 +21,8 @@ class _NavBar extends Component {
           </div>
         </div>
         <div class="title">mod-5 project</div>
-        { localStorage.firstName ?
-            <div>logged in as {localStorage.firstName}</div>
-          : <div>logged out</div>
+        { localStorage.firstName &&
+          <div><i>logged in as {localStorage.firstName}</i></div>
         }
       </div>
     );

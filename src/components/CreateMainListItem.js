@@ -1,14 +1,15 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
+import { Button, Input } from './UI/StyledComponents'
+
 class CreateMainListItem extends Component {
 
-  constructor() {
-    super();
-    this.state = {
-      text: '',
-    };
+  state = {
+    text: '',
   }
+
+  inputRef = React.createRef();
 
   handleSubmit = event => {
     event.preventDefault();
@@ -28,9 +29,17 @@ class CreateMainListItem extends Component {
     return(
       <div>
         <form onSubmit={this.handleSubmit}>
-    	    <label>add a thing</label>
-          <input type="text" onChange={(event) => this.handleChange(event)} value={this.state.text}/>
-          <input type="submit" />
+          {/*<input type="text" onChange={(event) => this.handleChange(event)} value={this.state.text}/>*/}
+
+          <Input
+            ref={this.inputRef}
+            placeholder="more things"
+            onMouseEnter={() => {
+              this.inputRef.current.focus()
+            }}
+          />
+
+          <Button type="submit">add!</Button>
        </form>
      </div>
    );

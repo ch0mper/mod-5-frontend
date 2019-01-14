@@ -15,17 +15,17 @@ class App extends Component {
   render() {
     return (
       <div>
-      < NavBar />
-      <Router history={history}>
-        <Switch>
-          <Route path="/login" component={Login} />
-          <Route path="/signup" component={Signup} />
-          <Route path="/welcome" component={Welcome} />
-          <Route path="/home" component={Home} />
-          <Route path="/backlog" component={Backlog} />
-          <Route path="/" component={Index} />
-        </Switch>
-      </Router>
+        < NavBar />
+        <Router history={history}>
+          <Switch>
+            <Route path="/login" component={Login} />
+            <Route path="/signup" component={Signup} />
+            <Route path="/welcome" component={Welcome} />
+            <Route path="/home" component={Home} />
+            <Route path="/backlog" component={Backlog} />
+            <Route path="/" component={Index} />
+          </Switch>
+        </Router>
       </div>
     );
   }

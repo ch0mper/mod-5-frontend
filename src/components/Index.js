@@ -1,12 +1,13 @@
 import React from 'react';
 import history from '../state/history'
+import { Button, Container } from './UI/StyledComponents'
 
 const Index = () => (
-  <div>
+  <Container>
     <p><b>index.js: </b> info about this project and what it does</p>
-    <button onClick={() => history.push('/login')} class="button">log in</button>
-    <button onClick={() => history.push('/signup')} class="button">create account</button>
-  </div>
+    <Button onClick={() => history.push('/login')}>log in</Button>
+    <Button onClick={() => history.push('/signup')}>create account</Button>
+  </Container>
 );
 
 export default Index;

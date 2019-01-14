@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { actions } from '../state/actions'
+import { Button, Container } from './UI/StyledComponents'
 
 class _Signup extends Component {
   render() {
     return (
-      <div><br/>
+      <Container>
         <form onSubmit={e => this.props.signup(e)} >
           <div>
             <label>First Name </label>
@@ -19,9 +20,9 @@ class _Signup extends Component {
             <label>Password </label>
             <input name="passwordInput" type="password" />
           </div>
-          <button type="submit" class="button">Let's go!</button>
+          <Button type="submit">Let's go!</Button>
         </form>
-      </div>
+      </Container>
     );
   }
 }

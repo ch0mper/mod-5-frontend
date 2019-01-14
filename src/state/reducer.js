@@ -1,6 +1,5 @@
 import history from './history'
 import { LOGIN, SIGNUP, LOGOUT, GETTASKS } from './types'
-import { initialState } from './initial'
 
 export const reducer = function(currentState, action){
   const newState = { ...currentState }

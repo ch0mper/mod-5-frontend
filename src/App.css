@@ -18,7 +18,7 @@ body {
   background-color: #aaaaaa;
   border: none;
   border-radius: 5px;
-  box-shadow: 0 2px #ebebeb;
+  box-shadow: 2px 2px 1px #ebebeb;
   cursor: pointer;
 }
 
@@ -26,12 +26,14 @@ body {
 
 .button:active {
   background-color: #808080;
-  box-shadow: 0 2px #ebebeb;
+  box-shadow: 2px 2px 1px #ebebeb;
   transform: translateY(2px);
 }
 
 .list-card {
   border-style: solid;
+  border-color: #d0d0d0;
+  box-shadow: 3px 3px 2px #ebebeb;
   margin: 10px;
   padding: 10px;
 }
