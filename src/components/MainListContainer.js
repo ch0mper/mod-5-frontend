@@ -7,6 +7,7 @@ import CreateMainListItem from './CreateMainListItem';
 class MainListContainer extends Component {
 
   mapTasks = () => {
+    console.log(this.props.tasks)
     return this.props.tasks.map( task => (
       < MainListItem task={task} />
     ))
