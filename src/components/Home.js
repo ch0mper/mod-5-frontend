@@ -22,7 +22,7 @@ class _Home extends Component {
         <h2>/home</h2>
         < TodaysDate />
         { localStorage.token &&
-          <p>hi {localStorage.firstName} !!!!!!!!!</p>
+          <p>hi {localStorage.firstName} !!</p>
         }
       </Container>
       <Grid>

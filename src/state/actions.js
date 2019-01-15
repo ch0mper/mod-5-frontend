@@ -18,6 +18,7 @@ export const actions = {
       })
       .then( res => res.json() )
       .then( result => {
+        // if result.error show stuff else
         localStorage.setItem('token', result.token)
         dispatch({
           type: LOGIN,
@@ -133,6 +134,7 @@ export const actions = {
           type: TOGGLE_TASK,
           payload: result
         })
+        // below works too
         //dispatch(actions.getTasks(localStorage.currentUserId))
       })
     }

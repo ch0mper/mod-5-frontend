@@ -38,6 +38,5 @@ export const reducer = function(currentState, action){
       })
     break;
   }
-  console.log('NEW STATE', newState)
   return newState
 }
