@@ -111,9 +111,31 @@ export const actions = {
     }
   },
 
-  toggleTodo(id){
-    return({type: TOGGLE_TASK,
-    id})
+  toggleTask(id, completedStatus){
+    return function(dispatch, getState){
+
+      fetch(`http://localhost:5000/api/tasks/${id}`,{
+        method:'PATCH',
+        headers:{
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
+          'Content-Type':'application/json',
+          Accept: 'application/json'
+        },
+        body:JSON.stringify({
+          completed: !completedStatus
+        })
+      })
+
+      .then( res => res.json() )
+
+      .then( result => {
+        dispatch({
+          type: TOGGLE_TASK,
+          payload: result
+        })
+        //dispatch(actions.getTasks(localStorage.currentUserId))
+      })
+    }
   }
 
   // add more actions here

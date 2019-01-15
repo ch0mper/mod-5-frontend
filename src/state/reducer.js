@@ -27,15 +27,17 @@ export const reducer = function(currentState, action){
       newState.tasks = [...newState.tasks, action.payload]
     break;
     case TOGGLE_TASK:
-      return newState.map(
-        task =>
-          task.id === action.id ? { ...task, completed: !task.completed } : task
-      )
+      newState.tasks = newState.tasks.map( task => {
+        if (task._id !== action.payload._id) {
+          return task
+        }
+        return {
+          ...task,
+          ...action.payload
+        }
+      })
     break;
-    // case 'SELECT_QUESTION':
-    //   history.push(`/question/${action.payload}`)
-    // break;
   }
-
+  console.log('NEW STATE', newState)
   return newState
 }

@@ -15,7 +15,7 @@ class _Home extends Component {
   }
 
   render() {
-    console.log('tasks!!!', this.props.tasks)
+    console.log('tasks from home', this.props.tasks)
     return (
       <div>
       <Container>
