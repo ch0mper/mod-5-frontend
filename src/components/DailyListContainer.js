@@ -15,7 +15,7 @@ class DailyListContainer extends Component {
   render() {
     return(
       <div>
-        <h3>hi hi hi</h3>
+        <h3>hi hi hi HARD CODED</h3>
         <li>some daily things</li>
         <li>to do (hard-coded)</li>
      </div>
