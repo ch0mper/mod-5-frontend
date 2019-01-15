@@ -12,11 +12,9 @@ const MainListItem = props => (
     textDecoration: props.task.completed ? 'line-through' : 'none'
   }}
   >
-    {props.task.content}}
+    {props.task.content}
   </p>
   </div>
 );
 
 export default MainListItem;
-
-// <li>{props.task.content}</li>
