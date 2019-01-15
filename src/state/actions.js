@@ -97,7 +97,8 @@ export const actions = {
         body:JSON.stringify({
           content: input.content,
           userId: userId,
-          completed: false
+          completed: false,
+          isPriority: false
         })
       })
 
