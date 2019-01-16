@@ -3,10 +3,9 @@ import { connect } from 'react-redux'
 
 import { actions } from '../state/actions'
 import { Button, Input } from './UI/StyledComponents'
-import { ADD_TASK } from '../state/types'
+import { ADD_DAILIES } from '../state/types'
 
-
-class CreateMainListItem extends Component {
+class CreateDailies extends Component {
 
   state = {
     content: '',
@@ -16,7 +15,8 @@ class CreateMainListItem extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    this.props.addTask(this.state, localStorage.currentUserId, 'false', ADD_TASK)
+    this.props.addTask(this.state, localStorage.currentUserId, 'true', ADD_DAILIES)
+    console.log('hi')
     this.setState({
       content: ''
     })
@@ -52,4 +52,4 @@ class CreateMainListItem extends Component {
   }
 };
 
-export default connect(null, actions)(CreateMainListItem);
+export default connect(null, actions)(CreateDailies);

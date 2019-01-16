@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { actions } from '../state/actions'
 import { UPDATE_BACKLOG, MOVE_TO_MAINLIST } from '../state/types'
 import MainListItem from './MainListItem';
-import CreateMainListItem from './CreateMainListItem';
+// import CreateMainListItem from './CreateMainListItem';
 
 class BacklogContainer extends Component {
 

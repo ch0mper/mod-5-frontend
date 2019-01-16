@@ -1,4 +1,5 @@
 import React from 'react';
+// import inlineEdit from './UI/inlineEdit'
 
 const MainListItem = props => (
   <div>
