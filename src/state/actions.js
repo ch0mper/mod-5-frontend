@@ -110,7 +110,9 @@ export const actions = {
           userId: userId,
           completed: false,
           isPriority: false,
-          isBacklog: false
+          isBacklog: false,
+          dateCreated: new Date(),
+          dateUpdated: new Date()
         })
       })
       .then( res => res.json() )
@@ -133,7 +135,8 @@ export const actions = {
           Accept: 'application/json'
         },
         body:JSON.stringify({
-          completed: !completedStatus
+          completed: !completedStatus,
+          dateUpdated: new Date()
         })
       })
       .then( res => res.json() )
@@ -158,7 +161,8 @@ export const actions = {
           Accept: 'application/json'
         },
         body:JSON.stringify({
-          isPriority: !priorityStatus
+          isPriority: !priorityStatus,
+          dateUpdated: new Date()
         })
       })
       .then( res => res.json() )
@@ -202,7 +206,8 @@ export const actions = {
           Accept: 'application/json'
         },
         body:JSON.stringify({
-          isBacklog: !backlogStatus
+          isBacklog: !backlogStatus,
+          dateUpdated: new Date()
         })
       })
       .then( res => res.json() )

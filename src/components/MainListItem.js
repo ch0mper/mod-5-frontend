@@ -1,4 +1,5 @@
 import React from 'react';
+// import inlineEdit from './UI/inlineEdit'
 
 const MainListItem = props => (
   <div>
@@ -15,7 +16,7 @@ const MainListItem = props => (
     textDecoration: props.task.completed ? 'line-through' : 'none'
   }}
   >
-    {props.task.content}
+    {props.task.content} ({props.task.dateUpdated})
   <div class="dropdown-content">
     <div onClick={props.toggleBacklog}>{ props.task.isBacklog ? 'move to mainlist' : 'move to backlog'}</div>
     <div>edit</div>
