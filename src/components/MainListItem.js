@@ -19,7 +19,7 @@ const MainListItem = props => (
   <div class="dropdown-content">
     <div onClick={() => console.log('clicked')}>move to backlog</div>
     <div>edit</div>
-    <div>delete</div>
+    <div onClick={props.deleteTask}>delete</div>
   </div>
   </span>
 

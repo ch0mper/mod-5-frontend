@@ -12,7 +12,8 @@ class MainListContainer extends Component {
     this.props.tasks.sort(function(a,b){return a.completed-b.completed});
     return this.props.tasks.map( task => (
       < MainListItem task={task} toggleComplete={() => this.props.toggleTaskComplete(task._id, task.completed)}
-      togglePriority={() => this.props.toggleTaskPriority(task._id, task.isPriority)}/>
+      togglePriority={() => this.props.toggleTaskPriority(task._id, task.isPriority)}
+      deleteTask={() => this.props.deleteTask(task._id)}/>
     ))
   }
 

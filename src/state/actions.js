@@ -1,4 +1,4 @@
-import { LOGIN, SIGNUP, LOGOUT, GET_TASKS, ADD_TASK, UPDATE_TASK } from './types'
+import { LOGIN, SIGNUP, LOGOUT, GET_TASKS, ADD_TASK, UPDATE_TASK, DELETE_TASK } from './types'
 
 export const actions = {
 
@@ -143,7 +143,6 @@ export const actions = {
 
   toggleTaskPriority(id, priorityStatus){
     return function(dispatch, getState){
-
       fetch(`http://localhost:5000/api/tasks/${id}`,{
         method:'PATCH',
         headers:{
@@ -155,12 +154,30 @@ export const actions = {
           isPriority: !priorityStatus
         })
       })
-
       .then( res => res.json() )
-
       .then( result => {
         dispatch({
           type: UPDATE_TASK,
+          payload: result
+        })
+      })
+    }
+  },
+
+  deleteTask(id){
+    return function(dispatch, getState){
+      fetch(`http://localhost:5000/api/tasks/${id}`,{
+        method:'DELETE',
+        headers:{
+          Authorization: `${localStorage.getItem('token')}`,
+          'Content-Type':'application/json',
+          Accept: 'application/json'
+        }
+      })
+      .then( res => res.json() )
+      .then( result => {
+        dispatch({
+          type: DELETE_TASK,
           payload: result
         })
       })
