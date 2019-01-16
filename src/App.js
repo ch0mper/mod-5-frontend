@@ -8,7 +8,7 @@ import { Login } from './components/Login';
 import { Signup } from './components/Signup';
 import { Welcome } from './components/Welcome';
 import { Home } from './components/Home';
-import Backlog from './components/Backlog';
+import BacklogContainer from './components/BacklogContainer';
 import { NavBar } from './components/NavBar';
 
 class App extends Component {
@@ -22,7 +22,7 @@ class App extends Component {
             <Route path="/signup" component={Signup} />
             <Route path="/welcome" component={Welcome} />
             <Route path="/home" component={Home} />
-            <Route path="/backlog" component={Backlog} />
+            <Route path="/backlog" component={BacklogContainer} />
             <Route path="/" component={Index} />
           </Switch>
         </Router>

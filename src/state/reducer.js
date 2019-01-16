@@ -1,5 +1,5 @@
 import history from './history'
-import { LOGIN, SIGNUP, LOGOUT, GET_TASKS, ADD_TASK, UPDATE_TASK, DELETE_TASK } from './types'
+import { LOGIN, SIGNUP, LOGOUT, GET_TASKS, GET_BACKLOG, ADD_TASK, UPDATE_TASK, MOVE_TO_BACKLOG, DELETE_TASK, UPDATE_BACKLOG, MOVE_TO_MAINLIST } from './types'
 
 export const reducer = function(currentState, action){
   const newState = { ...currentState }
@@ -23,6 +23,9 @@ export const reducer = function(currentState, action){
     case GET_TASKS:
       newState.tasks = action.payload
     break;
+    case GET_BACKLOG:
+      newState.backlog = action.payload
+    break;
     case ADD_TASK:
       newState.tasks = [...newState.tasks, action.payload]
     break;
@@ -38,7 +41,28 @@ export const reducer = function(currentState, action){
       })
     break;
     case DELETE_TASK:
+    console.log('action.payload', action.payload)
+    newState.tasks = newState.tasks.filter(task => task._id !== action.payload._id)
+    newState.backlog = newState.backlog.filter(task => task._id !== action.payload._id)
+    break;
+    case MOVE_TO_BACKLOG:
+      newState.backlog = [...newState.backlog, action.payload]
       newState.tasks = newState.tasks.filter(task => task._id !== action.payload._id)
+    break;
+    case MOVE_TO_MAINLIST:
+      newState.tasks = [...newState.tasks, action.payload]
+      newState.backlog = newState.backlog.filter(task => task._id !== action.payload._id)
+    break;
+    case UPDATE_BACKLOG:
+      newState.backlog = newState.backlog.map( task => {
+        if (task._id !== action.payload._id) {
+          return task
+        }
+        return {
+          ...task,
+          ...action.payload
+        }
+      })
     break;
   }
   return newState

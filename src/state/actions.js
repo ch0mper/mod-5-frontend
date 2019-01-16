@@ -1,4 +1,4 @@
-import { LOGIN, SIGNUP, LOGOUT, GET_TASKS, ADD_TASK, UPDATE_TASK, DELETE_TASK } from './types'
+import { LOGIN, SIGNUP, LOGOUT, GET_TASKS, GET_BACKLOG, ADD_TASK, UPDATE_TASK, MOVE_TO_BACKLOG, DELETE_TASK, UPDATE_BACKLOG, MOVE_TO_MAINLIST } from './types'
 
 export const actions = {
 
@@ -31,8 +31,6 @@ export const actions = {
   signup(input){
     return function(dispatch, getState){
       input.preventDefault()
-      console.log('sign up clicked')
-
       fetch('http://localhost:5000/api/user/signup',{
         method:'POST',
         headers:{
@@ -45,9 +43,7 @@ export const actions = {
           password: input.target.passwordInput.value
         })
       })
-
       .then( res => res.json() )
-
       .then( result => {
         localStorage.setItem('token', result.token)
         dispatch({
@@ -55,7 +51,6 @@ export const actions = {
           payload: result
         })
       })
-
     }
   },
 
@@ -72,16 +67,32 @@ export const actions = {
           'Accept': 'application/json'
         }
       })
-
       .then( res => res.json() )
-
       .then( result => {
         dispatch({
           type: GET_TASKS,
           payload: result
         })
       })
+    }
+  },
 
+  getBacklog(userId){
+    return function(dispatch, getState){
+      fetch(`http://localhost:5000/api/users/${userId}/backlog`, {
+        headers: {
+          Authorization: `${localStorage.getItem('token')}`,
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        }
+      })
+      .then( res => res.json() )
+      .then( result => {
+        dispatch({
+          type: GET_BACKLOG,
+          payload: result
+        })
+      })
     }
   },
 
@@ -98,12 +109,11 @@ export const actions = {
           content: input.content,
           userId: userId,
           completed: false,
-          isPriority: false
+          isPriority: false,
+          isBacklog: false
         })
       })
-
       .then( res => res.json() )
-
       .then( result => {
         dispatch({
           type: ADD_TASK,
@@ -113,9 +123,8 @@ export const actions = {
     }
   },
 
-  toggleTaskComplete(id, completedStatus){
+  toggleTaskComplete(id, completedStatus, action_type){
     return function(dispatch, getState){
-
       fetch(`http://localhost:5000/api/tasks/${id}`,{
         method:'PATCH',
         headers:{
@@ -127,12 +136,10 @@ export const actions = {
           completed: !completedStatus
         })
       })
-
       .then( res => res.json() )
-
       .then( result => {
         dispatch({
-          type: UPDATE_TASK,
+          type: action_type,
           payload: result
         })
         // below works too
@@ -141,7 +148,7 @@ export const actions = {
     }
   },
 
-  toggleTaskPriority(id, priorityStatus){
+  toggleTaskPriority(id, priorityStatus, action_type){
     return function(dispatch, getState){
       fetch(`http://localhost:5000/api/tasks/${id}`,{
         method:'PATCH',
@@ -157,7 +164,7 @@ export const actions = {
       .then( res => res.json() )
       .then( result => {
         dispatch({
-          type: UPDATE_TASK,
+          type: action_type,
           payload: result
         })
       })
@@ -176,8 +183,33 @@ export const actions = {
       })
       .then( res => res.json() )
       .then( result => {
+        console.log('result from fetch delete', result)
         dispatch({
           type: DELETE_TASK,
+          payload: result
+        })
+      })
+    }
+  },
+
+  toggleTaskBacklog(id, backlogStatus, action_type){
+    return function(dispatch, getState){
+      fetch(`http://localhost:5000/api/tasks/${id}`,{
+        method:'PATCH',
+        headers:{
+          Authorization: `${localStorage.getItem('token')}`,
+          'Content-Type':'application/json',
+          Accept: 'application/json'
+        },
+        body:JSON.stringify({
+          isBacklog: !backlogStatus
+        })
+      })
+      .then( res => res.json() )
+      .then( result => {
+        console.log('result from patch', result)
+        dispatch({
+          type: action_type,
           payload: result
         })
       })
