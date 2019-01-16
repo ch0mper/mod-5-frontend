@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
 import { actions } from '../state/actions'
-import { ADD_TASK, UPDATE_TASK, MOVE_TO_BACKLOG, DELETE_TASK } from '../state/types'
+import { UPDATE_TASK, MOVE_TO_BACKLOG } from '../state/types'
 import MainListItem from './MainListItem';
 import CreateMainListItem from './CreateMainListItem';
 

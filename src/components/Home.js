@@ -8,17 +8,20 @@ import MainListContainer from './MainListContainer';
 import DailyListContainer from './DailyListContainer';
 import BacklogContainer from './BacklogContainer';
 import { TodaysDate } from './TodaysDate';
+import { GET_TASKS, GET_BACKLOG, GET_DAILIES } from '../state/types'
 
 class _Home extends Component {
 
   componentDidMount(){
-    this.props.getTasks(localStorage.currentUserId)
-    this.props.getBacklog(localStorage.currentUserId)
+    this.props.getTasks(localStorage.currentUserId, 'tasks', GET_TASKS)
+    this.props.getTasks(localStorage.currentUserId, 'backlog', GET_BACKLOG)
+    this.props.getTasks(localStorage.currentUserId, 'dailies', GET_DAILIES)
   }
 
   render() {
     console.log('tasks from home', this.props.tasks)
     console.log('backlog from home', this.props.backlog)
+    console.log('dailies from home', this.props.dailies)
     return (
       <div>
       <Container>
@@ -31,7 +34,10 @@ class _Home extends Component {
       <Grid>
         <GridCol column="48">
           <div class='list-card'>
-          < DailyListContainer />
+            <h4>dailies</h4>
+            { this.props.dailies &&
+            < DailyListContainer tasks={this.props.dailies} />
+            }
           </div>
         </GridCol>
 
@@ -61,7 +67,8 @@ class _Home extends Component {
 
 const mapStateToProps = state => ({
   tasks: state.tasks,
-  backlog: state.backlog
+  backlog: state.backlog,
+  dailies: state.dailies
 })
 
 export const Home = connect(mapStateToProps, actions)(_Home)
