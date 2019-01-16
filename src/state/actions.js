@@ -1,4 +1,4 @@
-import { LOGIN, SIGNUP, LOGOUT, GET_TASKS, ADD_TASK, TOGGLE_TASK } from './types'
+import { LOGIN, SIGNUP, LOGOUT, GET_TASKS, ADD_TASK, UPDATE_TASK } from './types'
 
 export const actions = {
 
@@ -113,7 +113,7 @@ export const actions = {
     }
   },
 
-  toggleTask(id, completedStatus){
+  toggleTaskComplete(id, completedStatus){
     return function(dispatch, getState){
 
       fetch(`http://localhost:5000/api/tasks/${id}`,{
@@ -132,11 +132,37 @@ export const actions = {
 
       .then( result => {
         dispatch({
-          type: TOGGLE_TASK,
+          type: UPDATE_TASK,
           payload: result
         })
         // below works too
         //dispatch(actions.getTasks(localStorage.currentUserId))
+      })
+    }
+  },
+
+  toggleTaskPriority(id, priorityStatus){
+    return function(dispatch, getState){
+
+      fetch(`http://localhost:5000/api/tasks/${id}`,{
+        method:'PATCH',
+        headers:{
+          Authorization: `${localStorage.getItem('token')}`,
+          'Content-Type':'application/json',
+          Accept: 'application/json'
+        },
+        body:JSON.stringify({
+          isPriority: !priorityStatus
+        })
+      })
+
+      .then( res => res.json() )
+
+      .then( result => {
+        dispatch({
+          type: UPDATE_TASK,
+          payload: result
+        })
       })
     }
   }

@@ -31,8 +31,12 @@ body {
 }
 
 .checkbox {
-  display:inline-block;
-  margin-right:10px;
+  margin-right:5px;
+  cursor: pointer;
+}
+
+.priority-star {
+  margin-right:5px;
   cursor: pointer;
 }
 
@@ -46,10 +50,16 @@ body {
 
 .list-item {
   display:inline-block;
+  cursor: context-menu;
 }
+
 
 .list-item:hover .dropdown-content {
   display: block;
+}
+
+.list-item:hover {
+  background-color: pink;
 }
 
 .dropdown-content {
@@ -61,4 +71,8 @@ body {
   padding: 10px 10px;
   z-index: 1;
   cursor: pointer;
+}
+
+.dropdown-content div:hover {
+  background-color: #ddd;
 }

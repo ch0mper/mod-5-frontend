@@ -1,5 +1,5 @@
 import history from './history'
-import { LOGIN, SIGNUP, LOGOUT, GET_TASKS, ADD_TASK, TOGGLE_TASK } from './types'
+import { LOGIN, SIGNUP, LOGOUT, GET_TASKS, ADD_TASK, UPDATE_TASK } from './types'
 
 export const reducer = function(currentState, action){
   const newState = { ...currentState }
@@ -26,7 +26,7 @@ export const reducer = function(currentState, action){
     case ADD_TASK:
       newState.tasks = [...newState.tasks, action.payload]
     break;
-    case TOGGLE_TASK:
+    case UPDATE_TASK:
       newState.tasks = newState.tasks.map( task => {
         if (task._id !== action.payload._id) {
           return task
