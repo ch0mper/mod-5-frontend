@@ -1,5 +1,5 @@
 import history from './history'
-import { LOGIN, SIGNUP, LOGOUT, GET_TASKS, GET_BACKLOG, ADD_TASK, UPDATE_TASK, MOVE_TO_BACKLOG, DELETE_TASK, UPDATE_BACKLOG } from './types'
+import { LOGIN, SIGNUP, LOGOUT, GET_TASKS, GET_BACKLOG, ADD_TASK, UPDATE_TASK, MOVE_TO_BACKLOG, DELETE_TASK, UPDATE_BACKLOG, MOVE_TO_MAINLIST } from './types'
 
 export const reducer = function(currentState, action){
   const newState = { ...currentState }
@@ -48,6 +48,10 @@ export const reducer = function(currentState, action){
     case MOVE_TO_BACKLOG:
       newState.backlog = [...newState.backlog, action.payload]
       newState.tasks = newState.tasks.filter(task => task._id !== action.payload._id)
+    break;
+    case MOVE_TO_MAINLIST:
+      newState.tasks = [...newState.tasks, action.payload]
+      newState.backlog = newState.backlog.filter(task => task._id !== action.payload._id)
     break;
     case UPDATE_BACKLOG:
       newState.backlog = newState.backlog.map( task => {

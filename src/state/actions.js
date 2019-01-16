@@ -1,4 +1,4 @@
-import { LOGIN, SIGNUP, LOGOUT, GET_TASKS, GET_BACKLOG, ADD_TASK, UPDATE_TASK, MOVE_TO_BACKLOG, DELETE_TASK, UPDATE_BACKLOG } from './types'
+import { LOGIN, SIGNUP, LOGOUT, GET_TASKS, GET_BACKLOG, ADD_TASK, UPDATE_TASK, MOVE_TO_BACKLOG, DELETE_TASK, UPDATE_BACKLOG, MOVE_TO_MAINLIST } from './types'
 
 export const actions = {
 
@@ -192,7 +192,7 @@ export const actions = {
     }
   },
 
-  moveToBacklog(id){
+  toggleTaskBacklog(id, backlogStatus, action_type){
     return function(dispatch, getState){
       fetch(`http://localhost:5000/api/tasks/${id}`,{
         method:'PATCH',
@@ -202,14 +202,14 @@ export const actions = {
           Accept: 'application/json'
         },
         body:JSON.stringify({
-          isBacklog: true
+          isBacklog: !backlogStatus
         })
       })
       .then( res => res.json() )
       .then( result => {
         console.log('result from patch', result)
         dispatch({
-          type: MOVE_TO_BACKLOG,
+          type: action_type,
           payload: result
         })
       })

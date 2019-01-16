@@ -15,7 +15,7 @@ class MainListContainer extends Component {
       < MainListItem task={task} toggleComplete={() => this.props.toggleTaskComplete(task._id, task.completed, UPDATE_TASK)}
       togglePriority={() => this.props.toggleTaskPriority(task._id, task.isPriority, UPDATE_TASK)}
       deleteTask={() => this.props.deleteTask(task._id)}
-      moveToBacklog={() => this.props.moveToBacklog(task._id)}/>
+      toggleBacklog={() => this.props.toggleTaskBacklog(task._id, task.isBacklog, MOVE_TO_BACKLOG)}/>
     ))
   }
 

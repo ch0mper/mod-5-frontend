@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
 import { actions } from '../state/actions'
-import { UPDATE_BACKLOG } from '../state/types'
+import { UPDATE_BACKLOG, MOVE_TO_MAINLIST } from '../state/types'
 import MainListItem from './MainListItem';
 import CreateMainListItem from './CreateMainListItem';
 
@@ -14,7 +14,8 @@ class BacklogContainer extends Component {
     return this.props.tasks.map( task => (
       < MainListItem task={task} toggleComplete={() => this.props.toggleTaskComplete(task._id, task.completed, UPDATE_BACKLOG)}
       togglePriority={() => this.props.toggleTaskPriority(task._id, task.isPriority, UPDATE_BACKLOG)}
-      deleteTask={() => this.props.deleteTask(task._id)}/>
+      deleteTask={() => this.props.deleteTask(task._id)}
+      toggleBacklog={() => this.props.toggleTaskBacklog(task._id, task.isBacklog, MOVE_TO_MAINLIST)}/>
     ))
   }
 

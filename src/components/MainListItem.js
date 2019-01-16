@@ -17,7 +17,7 @@ const MainListItem = props => (
   >
     {props.task.content}
   <div class="dropdown-content">
-    <div onClick={props.moveToBacklog}>move to backlog</div>
+    <div onClick={props.toggleBacklog}>{ props.task.isBacklog ? 'move to mainlist' : 'move to backlog'}</div>
     <div>edit</div>
     <div onClick={props.deleteTask}>delete</div>
   </div>
