@@ -1,4 +1,4 @@
-import { LOGIN, SIGNUP, LOGOUT, GET_TASKS, GET_BACKLOG, ADD_TASK, UPDATE_TASK, UPDATE_BACKLOG, DELETE_TASK } from './types'
+import { LOGIN, SIGNUP, LOGOUT, GET_TASKS, GET_BACKLOG, ADD_TASK, UPDATE_TASK, MOVE_TO_BACKLOG, DELETE_TASK, UPDATE_BACKLOG } from './types'
 
 export const actions = {
 
@@ -113,9 +113,7 @@ export const actions = {
           isBacklog: false
         })
       })
-
       .then( res => res.json() )
-
       .then( result => {
         dispatch({
           type: ADD_TASK,
@@ -125,9 +123,8 @@ export const actions = {
     }
   },
 
-  toggleTaskComplete(id, completedStatus){
+  toggleTaskComplete(id, completedStatus, action_type){
     return function(dispatch, getState){
-
       fetch(`http://localhost:5000/api/tasks/${id}`,{
         method:'PATCH',
         headers:{
@@ -139,12 +136,10 @@ export const actions = {
           completed: !completedStatus
         })
       })
-
       .then( res => res.json() )
-
       .then( result => {
         dispatch({
-          type: UPDATE_TASK,
+          type: action_type,
           payload: result
         })
         // below works too
@@ -153,7 +148,7 @@ export const actions = {
     }
   },
 
-  toggleTaskPriority(id, priorityStatus){
+  toggleTaskPriority(id, priorityStatus, action_type){
     return function(dispatch, getState){
       fetch(`http://localhost:5000/api/tasks/${id}`,{
         method:'PATCH',
@@ -169,7 +164,7 @@ export const actions = {
       .then( res => res.json() )
       .then( result => {
         dispatch({
-          type: UPDATE_TASK,
+          type: action_type,
           payload: result
         })
       })
@@ -188,6 +183,7 @@ export const actions = {
       })
       .then( res => res.json() )
       .then( result => {
+        console.log('result from fetch delete', result)
         dispatch({
           type: DELETE_TASK,
           payload: result
@@ -213,7 +209,7 @@ export const actions = {
       .then( result => {
         console.log('result from patch', result)
         dispatch({
-          type: UPDATE_BACKLOG,
+          type: MOVE_TO_BACKLOG,
           payload: result
         })
       })
