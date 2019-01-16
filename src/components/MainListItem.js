@@ -1,20 +1,28 @@
 import React from 'react';
 
 const MainListItem = props => (
-
   <div>
-  <div class='checkbox' onClick={props.onClick}>
-    { props.task.completed ? '☑' : '☐' }
-  </div>
+  <span class='priority-star' onClick={props.togglePriority}>
+    { props.task.isPriority ? '⭑' : '⭒' }
+  </span>
 
-  <p class='list-item'
+  <span class='checkbox' onClick={props.toggleComplete}>
+    { props.task.completed ? '☑' : '☐' }
+  </span>
+
+  <span class='list-item'
   style={{
-    textDecoration: props.task.completed ? 'line-through' : 'none',
-    textDecoration: props.task.isPriority ? 'underline' : 'none'
+    textDecoration: props.task.completed ? 'line-through' : 'none'
   }}
   >
     {props.task.content}
-  </p>
+  <div class="dropdown-content">
+    <div onClick={() => console.log('clicked')}>move to backlog</div>
+    <div>edit</div>
+    <div onClick={props.deleteTask}>delete</div>
+  </div>
+  </span>
+
   </div>
 );
 

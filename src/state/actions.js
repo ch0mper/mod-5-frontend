@@ -1,4 +1,4 @@
-import { LOGIN, SIGNUP, LOGOUT, GET_TASKS, ADD_TASK, TOGGLE_TASK } from './types'
+import { LOGIN, SIGNUP, LOGOUT, GET_TASKS, ADD_TASK, UPDATE_TASK, DELETE_TASK } from './types'
 
 export const actions = {
 
@@ -67,7 +67,7 @@ export const actions = {
     return function(dispatch, getState){
       fetch(`http://localhost:5000/api/users/${userId}/tasks`, {
         headers: {
-          Authorization: `Bearer ${localStorage.getItem('token')}`,
+          Authorization: `${localStorage.getItem('token')}`,
           'Content-Type': 'application/json',
           'Accept': 'application/json'
         }
@@ -90,7 +90,7 @@ export const actions = {
       fetch('http://localhost:5000/api/tasks',{
         method:'POST',
         headers:{
-          Authorization: `Bearer ${localStorage.getItem('token')}`,
+          Authorization: `${localStorage.getItem('token')}`,
           'Content-Type':'application/json',
           Accept: 'application/json'
         },
@@ -113,13 +113,13 @@ export const actions = {
     }
   },
 
-  toggleTask(id, completedStatus){
+  toggleTaskComplete(id, completedStatus){
     return function(dispatch, getState){
 
       fetch(`http://localhost:5000/api/tasks/${id}`,{
         method:'PATCH',
         headers:{
-          Authorization: `Bearer ${localStorage.getItem('token')}`,
+          Authorization: `${localStorage.getItem('token')}`,
           'Content-Type':'application/json',
           Accept: 'application/json'
         },
@@ -132,11 +132,54 @@ export const actions = {
 
       .then( result => {
         dispatch({
-          type: TOGGLE_TASK,
+          type: UPDATE_TASK,
           payload: result
         })
         // below works too
         //dispatch(actions.getTasks(localStorage.currentUserId))
+      })
+    }
+  },
+
+  toggleTaskPriority(id, priorityStatus){
+    return function(dispatch, getState){
+      fetch(`http://localhost:5000/api/tasks/${id}`,{
+        method:'PATCH',
+        headers:{
+          Authorization: `${localStorage.getItem('token')}`,
+          'Content-Type':'application/json',
+          Accept: 'application/json'
+        },
+        body:JSON.stringify({
+          isPriority: !priorityStatus
+        })
+      })
+      .then( res => res.json() )
+      .then( result => {
+        dispatch({
+          type: UPDATE_TASK,
+          payload: result
+        })
+      })
+    }
+  },
+
+  deleteTask(id){
+    return function(dispatch, getState){
+      fetch(`http://localhost:5000/api/tasks/${id}`,{
+        method:'DELETE',
+        headers:{
+          Authorization: `${localStorage.getItem('token')}`,
+          'Content-Type':'application/json',
+          Accept: 'application/json'
+        }
+      })
+      .then( res => res.json() )
+      .then( result => {
+        dispatch({
+          type: DELETE_TASK,
+          payload: result
+        })
       })
     }
   }
