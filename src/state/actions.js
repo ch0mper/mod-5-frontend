@@ -67,7 +67,7 @@ export const actions = {
     return function(dispatch, getState){
       fetch(`http://localhost:5000/api/users/${userId}/tasks`, {
         headers: {
-          Authorization: `Bearer ${localStorage.getItem('token')}`,
+          Authorization: `${localStorage.getItem('token')}`,
           'Content-Type': 'application/json',
           'Accept': 'application/json'
         }
@@ -90,7 +90,7 @@ export const actions = {
       fetch('http://localhost:5000/api/tasks',{
         method:'POST',
         headers:{
-          Authorization: `Bearer ${localStorage.getItem('token')}`,
+          Authorization: `${localStorage.getItem('token')}`,
           'Content-Type':'application/json',
           Accept: 'application/json'
         },
@@ -119,7 +119,7 @@ export const actions = {
       fetch(`http://localhost:5000/api/tasks/${id}`,{
         method:'PATCH',
         headers:{
-          Authorization: `Bearer ${localStorage.getItem('token')}`,
+          Authorization: `${localStorage.getItem('token')}`,
           'Content-Type':'application/json',
           Accept: 'application/json'
         },
