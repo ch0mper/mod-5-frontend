@@ -95,7 +95,8 @@ export const actions = {
           isBacklog: false,
           isRecurring: `${recurringStatus}`, //true from daily, false from mainlist
           dateCreated: new Date(),
-          dateUpdated: new Date()
+          dateUpdated: new Date(),
+          simpleDateUpdated: parseInt((new Date()).toISOString().slice(0,10).replace(/-/g,""))
         })
       })
       .then( res => res.json() )
@@ -150,7 +151,8 @@ export const actions = {
         },
         body:JSON.stringify({
           isCompleted: !isCompletedStatus,
-          dateUpdated: new Date()
+          dateUpdated: new Date(),
+          simpleDateUpdated: parseInt((new Date()).toISOString().slice(0,10).replace(/-/g,""))
         })
       })
       .then( res => res.json() )
@@ -176,7 +178,8 @@ export const actions = {
         },
         body:JSON.stringify({
           isPriority: !priorityStatus,
-          dateUpdated: new Date()
+          dateUpdated: new Date(),
+          simpleDateUpdated: parseInt((new Date()).toISOString().slice(0,10).replace(/-/g,""))
         })
       })
       .then( res => res.json() )
@@ -220,7 +223,8 @@ export const actions = {
         },
         body:JSON.stringify({
           isBacklog: !backlogStatus,
-          dateUpdated: new Date()
+          dateUpdated: new Date(),
+          simpleDateUpdated: parseInt((new Date()).toISOString().slice(0,10).replace(/-/g,""))
         })
       })
       .then( res => res.json() )
