@@ -77,63 +77,6 @@ export const actions = {
     }
   },
 
-  // getTasks(userId){
-  //   return function(dispatch, getState){
-  //     fetch(`http://localhost:5000/api/users/${userId}/tasks`, {
-  //       headers: {
-  //         Authorization: `${localStorage.getItem('token')}`,
-  //         'Content-Type': 'application/json',
-  //         'Accept': 'application/json'
-  //       }
-  //     })
-  //     .then( res => res.json() )
-  //     .then( result => {
-  //       dispatch({
-  //         type: GET_TASKS,
-  //         payload: result
-  //       })
-  //     })
-  //   }
-  // },
-
-  // getBacklog(userId){
-  //   return function(dispatch, getState){
-  //     fetch(`http://localhost:5000/api/users/${userId}/backlog`, {
-  //       headers: {
-  //         Authorization: `${localStorage.getItem('token')}`,
-  //         'Content-Type': 'application/json',
-  //         'Accept': 'application/json'
-  //       }
-  //     })
-  //     .then( res => res.json() )
-  //     .then( result => {
-  //       dispatch({
-  //         type: GET_BACKLOG,
-  //         payload: result
-  //       })
-  //     })
-  //   }
-  // },
-
-  // getDailies(userId){
-  //   return function(dispatch, getState){
-  //     fetch(`http://localhost:5000/api/users/${userId}/dailies`, {
-  //       headers: {
-  //         Authorization: `${localStorage.getItem('token')}`,
-  //         'Content-Type': 'application/json',
-  //         'Accept': 'application/json'
-  //       }
-  //     })
-  //     .then( res => res.json() )
-  //     .then( result => {
-  //       dispatch({
-  //         type: GET_DAILIES,
-  //         payload: result
-  //       })
-  //     })
-  //   }
-  // },
-
   addTask(input, userId, recurringStatus, action_type){
     return function(dispatch, getState){
       console.log(recurringStatus);;
@@ -147,7 +90,7 @@ export const actions = {
         body:JSON.stringify({
           content: input.content,
           userId: userId,
-          completed: false,
+          isCompleted: false,
           isPriority: false,
           isBacklog: false,
           isRecurring: `${recurringStatus}`, //true from daily, false from mainlist
@@ -178,7 +121,7 @@ export const actions = {
   //       body:JSON.stringify({
   //         content: input.content,
   //         userId: userId,
-  //         completed: false,
+  //         isCompleted: false,
   //         isPriority: false,
   //         isBacklog: false,
   //         isRecurring: false, // can this be a variable that is true if passed in from DailyList ?
@@ -196,7 +139,7 @@ export const actions = {
   //   }
   // },
 
-  toggleTaskComplete(id, completedStatus, action_type){
+  toggleTaskComplete(id, isCompletedStatus, action_type){
     return function(dispatch, getState){
       fetch(`http://localhost:5000/api/tasks/${id}`,{
         method:'PATCH',
@@ -206,7 +149,7 @@ export const actions = {
           Accept: 'application/json'
         },
         body:JSON.stringify({
-          completed: !completedStatus,
+          isCompleted: !isCompletedStatus,
           dateUpdated: new Date()
         })
       })

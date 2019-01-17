@@ -11,7 +11,7 @@ class DailyListContainer extends Component {
   mapTasks = () => {
     return this.props.tasks.map( task => (
       < ListItem task={task}
-      toggleComplete={() => this.props.toggleTaskComplete(task._id, task.completed, UPDATE_DAILIES)}
+      toggleComplete={() => this.props.toggleTaskComplete(task._id, task.isCompleted, UPDATE_DAILIES)}
       deleteTask={() => this.props.deleteTask(task._id)}/>
     ))
   }

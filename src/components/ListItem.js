@@ -11,12 +11,12 @@ const ListItem = props => (
   }
 
   <span class='checkbox' onClick={props.toggleComplete}>
-    { props.task.completed ? '☑' : '☐' }
+    { props.task.isCompleted ? '☑' : '☐' }
   </span>
 
   <span class='list-item'
   style={{
-    textDecoration: props.task.completed ? 'line-through' : 'none'
+    textDecoration: props.task.isCompleted ? 'line-through' : 'none'
   }}
   >
     {props.task.content}
