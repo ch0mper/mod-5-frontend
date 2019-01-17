@@ -258,7 +258,6 @@ export const actions = {
       })
       .then( res => res.json() )
       .then( result => {
-        console.log('result from fetch delete', result)
         dispatch({
           type: DELETE_TASK,
           payload: result

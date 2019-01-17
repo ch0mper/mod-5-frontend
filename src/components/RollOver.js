@@ -1,7 +1,7 @@
 import React from 'react';
 // import inlineEdit from './UI/inlineEdit'
 
-const MainListItem = props => (
+const RollOver = props => (
   <div>
   <span class='priority-star' onClick={props.togglePriority}>
     { props.task.isPriority ? '⭑' : '⭒' }
@@ -18,8 +18,10 @@ const MainListItem = props => (
   >
     {props.task.content}
   <div class="dropdown-content">
-    <div onClick={props.toggleBacklog}>{ props.task.isBacklog ? 'move to mainlist' : 'move to backlog'}</div>
-    <div>edit</div>
+    { !props.task.isRecurring &&
+      <div onClick={props.toggleBacklog}>{ props.task.isBacklog ? 'move to mainlist' : 'move to backlog'}</div>
+    }
+    <div>edit (no)</div>
     <div onClick={props.deleteTask}>delete</div>
   </div>
   </span>
@@ -27,4 +29,4 @@ const MainListItem = props => (
   </div>
 );
 
-export default MainListItem;
+export default RollOver;
