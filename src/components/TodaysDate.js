@@ -4,7 +4,7 @@ export class TodaysDate extends Component {
 
   getDate = () => {
     let today = new Date();
-    let date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+    let date = (today.getMonth() + 1) + '-' + today.getDate() + '-' + today.getFullYear();
     return date;
   }
 

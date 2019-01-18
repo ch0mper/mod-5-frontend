@@ -240,7 +240,4 @@ export const actions = {
 
   // add more actions here
 
-  // answerQuestion(option){
-    //     return ({ type: 'SELECT_QUESTION', payload: option.nextQuestionID  })
-    // }
 }

@@ -1,3 +1,6 @@
 export const initialState = {
-  tasks: []
+  tasks: [],
+  rollover: [],
+  backlog: [],
+  dailies: []
 }
