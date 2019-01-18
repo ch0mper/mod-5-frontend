@@ -16,7 +16,6 @@ class CreateDailies extends Component {
   handleSubmit = event => {
     event.preventDefault();
     this.props.addTask(this.state, localStorage.currentUserId, 'true', ADD_DAILIES)
-    console.log('hi')
     this.setState({
       content: ''
     })
@@ -31,13 +30,13 @@ class CreateDailies extends Component {
   render() {
     return(
       <div>
-        <form onSubmit={this.handleSubmit}>
+        <form onSubmit={this.handleSubmit} style={{'margin-top':'8px'}}>
           {/*<input type="text" onChange={(event) => this.handleChange(event)} value={this.state.text}/>*/}
 
           <Input
             ref={this.inputRef}
             type="text"
-            placeholder="more things"
+            placeholder="add a daily"
             onMouseEnter={() => {
               this.inputRef.current.focus()
             }}

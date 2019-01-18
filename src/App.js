@@ -21,9 +21,13 @@ class App extends Component {
             <Route exact path="/login" component={Login} />
             <Route exact path="/signup" component={Signup} />
             <Route exact path="/welcome" component={Welcome} />
-            <Route exact path="/home" component={Home} />
+            <Route exact path="/home" render={() => (
+              !localStorage.token ? <Redirect to="/"/> : <Home/>
+            )}/>
             <Route exact path="/backlog" component={BacklogContainer} />
-            <Route exact path="/" component={Index} />
+            <Route exact path="/" render={() => (
+              localStorage.token ? <Redirect to="/home"/> : <Index/>
+            )}/>
           </Switch>
         </Router>
       </div>
@@ -32,3 +36,5 @@ class App extends Component {
 }
 
 export default App;
+
+// <Route exact path="/" component={Index} />

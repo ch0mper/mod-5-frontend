@@ -18,6 +18,8 @@ export const reducer = function(currentState, action){
     case LOGOUT:
       localStorage.clear()
       newState.tasks = []
+      newState.dailies = []
+      newState.backlog = []
       history.push('/home')
     break;
     case GET_TASKS:
