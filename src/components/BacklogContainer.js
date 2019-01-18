@@ -4,7 +4,6 @@ import { connect } from 'react-redux'
 import { actions } from '../state/actions'
 import { UPDATE_BACKLOG, MOVE_TO_MAINLIST } from '../state/types'
 import ListItem from './ListItem';
-// import CreateMainListItem from './CreateMainListItem';
 
 class BacklogContainer extends Component {
 
@@ -29,4 +28,8 @@ class BacklogContainer extends Component {
   }
 };
 
-export default connect(null, actions)(BacklogContainer);
+const mapStateToProps = state => ({
+  tasks: state.backlog
+})
+
+export default connect(mapStateToProps, actions)(BacklogContainer);

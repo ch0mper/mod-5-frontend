@@ -47,4 +47,9 @@ class MainListContainer extends Component {
   }
 };
 
-export default connect(null, actions)(MainListContainer);
+const mapStateToProps = state => ({
+  tasks: state.tasks,
+  rollover: state.rollover
+})
+
+export default connect(mapStateToProps, actions)(MainListContainer);

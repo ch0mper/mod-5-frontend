@@ -8,7 +8,7 @@ const ListItemRolledOver = props => (
   </span>
 
   <span class='list-item'>
-    {props.task.content} ({props.task.simpleDateUpdated})
+    {props.task.content}
   <div class="dropdown-content">
     <div onClick={() => console.log('this should delete and remake as MainListItem')}>move to mainlist</div>
     <div onClick={() => console.log('this should delete, and remake as backlog true item')}>move to backlog</div>

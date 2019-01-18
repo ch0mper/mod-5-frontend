@@ -35,7 +35,7 @@ export const reducer = function(currentState, action){
       newState.rollover = action.payload
     break;
     case ADD_TASK:
-      newState.tasks = [...newState.tasks, action.payload]
+      newState.tasks = [action.payload, ...newState.tasks]
     break;
     case ADD_DAILIES:
       newState.dailies = [...newState.dailies, action.payload]

@@ -19,7 +19,8 @@ const ListItem = props => (
     textDecoration: props.task.isCompleted ? 'line-through' : 'none', color: props.task.isCompleted ? 'lightgrey' : 'black'
   }}
   >
-    {props.task.content} ({props.task.simpleDateUpdated})
+    {props.task.content}
+    { !!props.task.streak && `(${props.task.streak})`}
   <div class="dropdown-content">
     { !props.task.isRecurring &&
       <div onClick={props.toggleBacklog}>{ props.task.isBacklog ? 'move to mainlist' : 'move to backlog'}</div>
