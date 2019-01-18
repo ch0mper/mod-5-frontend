@@ -1,14 +1,18 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
-import MainListItem from './MainListItem';
+import { actions } from '../state/actions';
+import { UPDATE_DAILIES } from '../state/types';
+import ListItem from './ListItem';
 import CreateDailies from './CreateDailies';
 
 class DailyListContainer extends Component {
 
   mapTasks = () => {
     return this.props.tasks.map( task => (
-      < MainListItem task={task} />
+      < ListItem task={task}
+      toggleComplete={() => this.props.toggleTaskComplete(task._id, task.isCompleted, UPDATE_DAILIES)}
+      deleteTask={() => this.props.deleteTask(task._id)}/>
     ))
   }
 
@@ -22,4 +26,4 @@ class DailyListContainer extends Component {
   }
 };
 
-export default connect(null, null)(DailyListContainer);
+export default connect(null, actions)(DailyListContainer);

@@ -18,12 +18,12 @@ class App extends Component {
         < NavBar />
         <Router history={history}>
           <Switch>
-            <Route path="/login" component={Login} />
-            <Route path="/signup" component={Signup} />
-            <Route path="/welcome" component={Welcome} />
-            <Route path="/home" component={Home} />
-            <Route path="/backlog" component={BacklogContainer} />
-            <Route path="/" component={Index} />
+            <Route exact path="/login" component={Login} />
+            <Route exact path="/signup" component={Signup} />
+            <Route exact path="/welcome" component={Welcome} />
+            <Route exact path="/home" component={Home} />
+            <Route exact path="/backlog" component={BacklogContainer} />
+            <Route exact path="/" component={Index} />
           </Switch>
         </Router>
       </div>
