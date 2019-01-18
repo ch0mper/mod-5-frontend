@@ -1,7 +1,7 @@
 import React from 'react';
 // import inlineEdit from './UI/inlineEdit'
 
-const RollOver = props => (
+const RollOverContainer = props => (
   <div>
   <span class='priority-star' onClick={props.togglePriority}>
     { props.task.isPriority ? '⭑' : '⭒' }
@@ -29,4 +29,4 @@ const RollOver = props => (
   </div>
 );
 
-export default RollOver;
+export default RollOverContainer;

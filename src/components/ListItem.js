@@ -16,7 +16,7 @@ const ListItem = props => (
 
   <span class='list-item'
   style={{
-    textDecoration: props.task.isCompleted ? 'line-through' : 'none'
+    textDecoration: props.task.isCompleted ? 'line-through' : 'none', color: props.task.isCompleted ? 'lightgrey' : 'black'
   }}
   >
     {props.task.content}

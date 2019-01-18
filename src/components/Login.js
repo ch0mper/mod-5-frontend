@@ -11,7 +11,7 @@ class _Login extends Component {
         <form onSubmit={e => this.props.login(e)} >
           <div>
             <label>Email </label>
-            <input name="emailInput" type="text" />
+            <input name="emailInput" type="text"/>
           </div>
           <div>
             <label>Password </label>

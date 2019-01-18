@@ -5,7 +5,7 @@ import { actions } from '../state/actions'
 import { UPDATE_TASK, MOVE_TO_BACKLOG } from '../state/types'
 import ListItem from './ListItem';
 import CreateMainListItem from './CreateMainListItem';
-import RollOver from './RollOver';
+import RollOverContainer from './RollOverContainer';
 
 class MainListContainer extends Component {
 
@@ -25,7 +25,7 @@ class MainListContainer extends Component {
     return(
       <div>
         { this.props.rollover &&
-          < RollOver />
+          < RollOverContainer />
         }
         < CreateMainListItem />
         { this.mapTasks() }

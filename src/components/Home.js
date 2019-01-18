@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { actions } from '../state/actions'
-import {Grid, GridCol} from 'griz';
+import { Grid, Cell } from "styled-css-grid";
 
 import { Container } from './UI/StyledComponents'
 import MainListContainer from './MainListContainer';
@@ -19,47 +19,50 @@ class _Home extends Component {
   }
 
   render() {
-    console.log('tasks from home', this.props.tasks)
-    console.log('backlog from home', this.props.backlog)
-    console.log('dailies from home', this.props.dailies)
     return (
       <div>
       <Container>
-        <h2>/home</h2>
-        < TodaysDate />
         { localStorage.token &&
           <p>hi {localStorage.firstName} !!</p>
         }
       </Container>
-      <Grid>
-        <GridCol column="48">
+
+      <Grid flow="column" columns={3} gap="2px">
+        <Cell height={1} width={1}>
+          <div class='list-card'>
+            < TodaysDate />
+          </div>
+        </Cell>
+        <Cell height={19} width={1}>
           <div class='list-card'>
             <h4>dailies</h4>
             { this.props.dailies &&
             < DailyListContainer tasks={this.props.dailies} />
             }
           </div>
-        </GridCol>
+        </Cell>
 
-        <GridCol column="48">
+        <Cell height={20} width={2}>
           <div class='list-card'>
             <h4>all the things</h4>
             { this.props.tasks &&
             < MainListContainer tasks={this.props.tasks} />
             }
           </div>
-        </GridCol>
+        </Cell>
+      </Grid>
 
-        <GridCol column="48">
+      <Grid columns={1} gap="2px">
+        <Cell width={1}>
           <div class='list-card'>
             <h4>backlog</h4>
             { this.props.backlog &&
             < BacklogContainer tasks={this.props.backlog} />
             }
           </div>
-        </GridCol>
-
+        </Cell>
       </Grid>
+
       </div>
     );
   }

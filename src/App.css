@@ -4,7 +4,8 @@ body {
 }
 
 * {
-  font-family: 'Roboto', sans-serif;
+  /*font-family: 'Roboto', sans-serif;*/
+  font-family: 'Roboto Slab', serif;
 }
 
 .button {
@@ -49,10 +50,9 @@ body {
 }
 
 .list-item {
-  display:inline-block;
+  display:inline;
   cursor: context-menu;
 }
-
 
 .list-item:hover .dropdown-content {
   display: block;

@@ -1,4 +1,4 @@
-import { LOGIN, SIGNUP, LOGOUT, GET_TASKS, GET_BACKLOG, GET_DAILIES, ADD_TASK, ADD_DAILIES, UPDATE_TASK, MOVE_TO_BACKLOG, DELETE_TASK, UPDATE_BACKLOG, MOVE_TO_MAINLIST } from './types'
+import { LOGIN, SIGNUP, LOGOUT, DELETE_TASK } from './types'
 
 export const actions = {
 
@@ -94,9 +94,9 @@ export const actions = {
           isPriority: false,
           isBacklog: false,
           isRecurring: `${recurringStatus}`, //true from daily, false from mainlist
-          dateCreated: new Date(),
-          dateUpdated: new Date(),
-          simpleDateUpdated: parseInt((new Date()).toISOString().slice(0,10).replace(/-/g,""))
+          dateCreated: new Date(Date.now() - 216e5),
+          dateUpdated: new Date(Date.now() - 216e5),
+          simpleDateUpdated: parseInt((new Date(Date.now() - 216e5)).toISOString().slice(0,10).replace(/-/g,""))
         })
       })
       .then( res => res.json() )
@@ -151,8 +151,8 @@ export const actions = {
         },
         body:JSON.stringify({
           isCompleted: !isCompletedStatus,
-          dateUpdated: new Date(),
-          simpleDateUpdated: parseInt((new Date()).toISOString().slice(0,10).replace(/-/g,""))
+          dateUpdated: new Date(Date.now() - 216e5),
+          simpleDateUpdated: parseInt((new Date(Date.now() - 216e5)).toISOString().slice(0,10).replace(/-/g,""))
         })
       })
       .then( res => res.json() )
@@ -178,8 +178,8 @@ export const actions = {
         },
         body:JSON.stringify({
           isPriority: !priorityStatus,
-          dateUpdated: new Date(),
-          simpleDateUpdated: parseInt((new Date()).toISOString().slice(0,10).replace(/-/g,""))
+          dateUpdated: new Date(Date.now() - 216e5),
+          simpleDateUpdated: parseInt((new Date(Date.now() - 216e5)).toISOString().slice(0,10).replace(/-/g,""))
         })
       })
       .then( res => res.json() )
@@ -223,8 +223,8 @@ export const actions = {
         },
         body:JSON.stringify({
           isBacklog: !backlogStatus,
-          dateUpdated: new Date(),
-          simpleDateUpdated: parseInt((new Date()).toISOString().slice(0,10).replace(/-/g,""))
+          dateUpdated: new Date(Date.now() - 216e5),
+          simpleDateUpdated: parseInt((new Date(Date.now() - 216e5)).toISOString().slice(0,10).replace(/-/g,""))
         })
       })
       .then( res => res.json() )
