@@ -19,6 +19,7 @@ class DailyListContainer extends Component {
   render() {
     return(
       <div>
+        <h3>dailies</h3>
         { this.mapTasks() }
         < CreateDailies />
      </div>

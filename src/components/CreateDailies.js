@@ -31,7 +31,6 @@ class CreateDailies extends Component {
     return(
       <div>
         <form onSubmit={this.handleSubmit} style={{'margin-top':'8px'}}>
-          {/*<input type="text" onChange={(event) => this.handleChange(event)} value={this.state.text}/>*/}
 
           <Input
             ref={this.inputRef}
@@ -44,7 +43,7 @@ class CreateDailies extends Component {
             value={this.state.content}
           />
 
-          <Button type="submit">add!</Button>
+          <Button type="submit">+</Button>
        </form>
      </div>
    );

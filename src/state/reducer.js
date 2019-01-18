@@ -1,5 +1,5 @@
 import history from './history'
-import { LOGIN, SIGNUP, LOGOUT, GET_TASKS, GET_BACKLOG, GET_DAILIES, ADD_TASK, ADD_DAILIES, UPDATE_TASK, MOVE_TO_BACKLOG, DELETE_TASK, UPDATE_BACKLOG, MOVE_TO_MAINLIST, UPDATE_DAILIES } from './types'
+import { LOGIN, SIGNUP, LOGOUT, GET_TASKS, GET_BACKLOG, GET_DAILIES, GET_ROLLOVER, ADD_TASK, ADD_DAILIES, UPDATE_TASK, MOVE_TO_BACKLOG, DELETE_TASK, UPDATE_BACKLOG, MOVE_TO_MAINLIST, UPDATE_DAILIES } from './types'
 
 export const reducer = function(currentState, action){
   const newState = { ...currentState }
@@ -31,6 +31,9 @@ export const reducer = function(currentState, action){
     case GET_DAILIES:
       newState.dailies = action.payload
     break;
+    case GET_ROLLOVER:
+      newState.rollover = action.payload
+    break;
     case ADD_TASK:
       newState.tasks = [...newState.tasks, action.payload]
     break;
@@ -52,6 +55,7 @@ export const reducer = function(currentState, action){
     newState.tasks = newState.tasks.filter(task => task._id !== action.payload._id)
     newState.backlog = newState.backlog.filter(task => task._id !== action.payload._id)
     newState.dailies = newState.dailies.filter(task => task._id !== action.payload._id)
+    newState.rollover = newState.rollover.filter(task => task._id !== action.payload._id)
     break;
     case MOVE_TO_BACKLOG:
       newState.backlog = [...newState.backlog, action.payload]

@@ -109,37 +109,6 @@ export const actions = {
     }
   },
 
-  // THIS ONE WORKS :) :) :)
-  // addTask(input, userId){
-  //   return function(dispatch, getState){
-  //     fetch('http://localhost:5000/api/tasks',{
-  //       method:'POST',
-  //       headers:{
-  //         Authorization: `${localStorage.getItem('token')}`,
-  //         'Content-Type':'application/json',
-  //         Accept: 'application/json'
-  //       },
-  //       body:JSON.stringify({
-  //         content: input.content,
-  //         userId: userId,
-  //         isCompleted: false,
-  //         isPriority: false,
-  //         isBacklog: false,
-  //         isRecurring: false, // can this be a variable that is true if passed in from DailyList ?
-  //         dateCreated: new Date(),
-  //         dateUpdated: new Date()
-  //       })
-  //     })
-  //     .then( res => res.json() )
-  //     .then( result => {
-  //       dispatch({
-  //         type: ADD_TASK,
-  //         payload: result
-  //       })
-  //     })
-  //   }
-  // },
-
   toggleTaskComplete(id, isCompletedStatus, action_type){
     return function(dispatch, getState){
       fetch(`http://localhost:5000/api/tasks/${id}`,{
@@ -240,7 +209,4 @@ export const actions = {
 
   // add more actions here
 
-  // answerQuestion(option){
-    //     return ({ type: 'SELECT_QUESTION', payload: option.nextQuestionID  })
-    // }
 }

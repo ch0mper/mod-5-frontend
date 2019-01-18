@@ -4,15 +4,15 @@ export class TodaysDate extends Component {
 
   getDate = () => {
     let today = new Date();
-    let date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+    let date = (today.getMonth() + 1) + '-' + today.getDate() + '-' + today.getFullYear();
     return date;
   }
 
   render() {
     return(
-      <div>
-        Date: { this.getDate() }
-     </div>
+      <h3 style={{'text-align': 'left', 'margin': '0em'}}>
+        date: { this.getDate() }
+     </h3>
    );
   }
 };

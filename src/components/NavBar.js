@@ -12,11 +12,10 @@ class _NavBar extends Component {
         <div class="dropdown">
           <button class="dropbtn">
             <img src={img} height="20" alt='loading' />
-            <i class="fa fa-caret-down"></i>
           </button>
           <div class="dropdown-content">
             <a href="/home">home</a>
-            <a href="/backlog">backlog</a>
+            <a href="/">beep</a>
             <a onClick={() => this.props.logout()}>log out</a>
           </div>
         </div>

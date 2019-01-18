@@ -31,8 +31,7 @@ class CreateMainListItem extends Component {
   render() {
     return(
       <div>
-        <form onSubmit={this.handleSubmit} style={{'margin-bottom':'8px'}}>
-          {/*<input type="text" onChange={(event) => this.handleChange(event)} value={this.state.text}/>*/}
+        <form onSubmit={this.handleSubmit} style={{'margin-bottom':'8px', 'margin-top':'12px'}}>
 
           <Input
             ref={this.inputRef}
@@ -45,7 +44,7 @@ class CreateMainListItem extends Component {
             value={this.state.content}
           />
 
-          <Button type="submit">add!</Button>
+          <Button type="submit">+</Button>
        </form>
      </div>
    );
