@@ -14,7 +14,7 @@ class MainListContainer extends Component {
       < ListItemRolledOver task={task}
       // toggleComplete={() => this.props.toggleTaskComplete(task._id, task.isCompleted, UPDATE_TASK)}
       // togglePriority={() => this.props.toggleTaskPriority(task._id, task.isPriority, UPDATE_TASK)}
-      // deleteTask={() => this.props.deleteTask(task._id)}
+      deleteTask={() => this.props.deleteTask(task._id)}
       // toggleBacklog={() => this.props.toggleTaskBacklog(task._id, task.isBacklog, MOVE_TO_BACKLOG)}
       />
     ))
@@ -35,10 +35,11 @@ class MainListContainer extends Component {
   render() {
     return(
       <div>
-        <div class='list-card'>
-        <h4>unfinished things from yesterday</h4>
+        <div class='rollover-card'>
+        <h3>unfinished things from yesterday</h3>
           { this.mapRollover() }
         </div>
+        <h3 style={{'margin-top': '1em'}}>all the things</h3>
         < CreateMainListItem />
         { this.mapTasks() }
      </div>

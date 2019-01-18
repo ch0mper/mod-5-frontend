@@ -24,7 +24,7 @@ class _Home extends Component {
       <div>
       <Container>
         { localStorage.token &&
-          <p>hi {localStorage.firstName} !!</p>
+          <p class='rainbow'>hi {localStorage.firstName} !!</p>
         }
       </Container>
 
@@ -36,7 +36,6 @@ class _Home extends Component {
         </Cell>
         <Cell height={19} width={1}>
           <div class='list-card'>
-            <h4>dailies</h4>
             { this.props.dailies &&
             < DailyListContainer tasks={this.props.dailies} />
             }
@@ -45,7 +44,6 @@ class _Home extends Component {
 
         <Cell height={20} width={2}>
           <div class='list-card'>
-            <h4>all the things</h4>
             { this.props.tasks &&
             < MainListContainer tasks={this.props.tasks} rollover={this.props.rollover} />
             }
@@ -55,8 +53,7 @@ class _Home extends Component {
 
       <Grid columns={1} gap="2px">
         <Cell width={1}>
-          <div class='list-card'>
-            <h4>backlog</h4>
+          <div class='list-card' style={{'margin-top':'10em'}}>
             { this.props.backlog &&
             < BacklogContainer tasks={this.props.backlog} />
             }

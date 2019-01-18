@@ -55,6 +55,7 @@ export const reducer = function(currentState, action){
     newState.tasks = newState.tasks.filter(task => task._id !== action.payload._id)
     newState.backlog = newState.backlog.filter(task => task._id !== action.payload._id)
     newState.dailies = newState.dailies.filter(task => task._id !== action.payload._id)
+    newState.rollover = newState.rollover.filter(task => task._id !== action.payload._id)
     break;
     case MOVE_TO_BACKLOG:
       newState.backlog = [...newState.backlog, action.payload]

@@ -10,9 +10,9 @@ export class TodaysDate extends Component {
 
   render() {
     return(
-      <div>
-        Date: { this.getDate() }
-     </div>
+      <h3 style={{'text-align': 'left', 'margin': '0em'}}>
+        date: { this.getDate() }
+     </h3>
    );
   }
 };

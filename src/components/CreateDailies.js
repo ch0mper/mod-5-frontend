@@ -43,7 +43,7 @@ class CreateDailies extends Component {
             value={this.state.content}
           />
 
-          <Button type="submit">add!</Button>
+          <Button type="submit">+</Button>
        </form>
      </div>
    );
