@@ -15,36 +15,37 @@ h3 {
   margin-bottom: 1em;
 }
 
-.button {
-  padding: 5px 15px;
-  margin: 5px;
-  font-size: 12px;
-  text-align: center;
+.bullet {
+  margin-right:5px;
   cursor: pointer;
-  outline: none;
+  position: relative;
+}
+
+.bullet .tooltiptext {
+  visibility: hidden;
+  width: max-content;
+  background-color: #a1a0a0;
   color: #fff;
-  background-color: #aaaaaa;
-  border: none;
-  border-radius: 5px;
-  box-shadow: 2px 2px 1px #ebebeb;
-  cursor: pointer;
+  font-size: .6em;
+  text-align: center;
+  border-radius: 4px;
+  padding: 4px;
+  position: absolute;
+  z-index: 1;
+  top: 100%;
+  left: 50%;
+  /* margin-left: -60px; */
+  opacity: 0;
+  transition: opacity 0.4s;
 }
 
-.button:hover {background-color: #808080}
-
-.button:active {
-  background-color: #808080;
-  box-shadow: 2px 2px 1px #ebebeb;
-  transform: translateY(2px);
+.bullet:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
 }
 
-.checkbox {
-  margin-right:5px;
-  cursor: pointer;
-}
-
-.priority-star {
-  margin-right:5px;
+.delete-icon {
+  margin-left:5px;
   cursor: pointer;
 }
 
@@ -67,10 +68,9 @@ h3 {
 
 .list-item {
   display:inline;
-  cursor: context-menu;
 }
 
-.list-item:hover .dropdown-content {
+/* .list-item:hover .dropdown-content {
   display: block;
 }
 
@@ -91,7 +91,7 @@ h3 {
 
 .dropdown-content div:hover {
   background-color: #ddd;
-}
+} */
 
 .rainbow {
   -webkit-animation: rainbow 6s infinite;

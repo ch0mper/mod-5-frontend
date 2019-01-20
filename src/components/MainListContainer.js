@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
 import { actions } from '../state/actions'
+import { Button, Input } from './UI/StyledComponents'
 import { UPDATE_TASK, MOVE_TO_BACKLOG, UPDATE_ROLLOVER, MOVE_ROLL_TO_MAIN, MOVE_ROLL_TO_BACKLOG } from '../state/types'
 import ListItem from './ListItem';
 import CreateMainListItem from './CreateMainListItem';
@@ -50,8 +51,8 @@ class MainListContainer extends Component {
         { !this.props.tasks.length ?
           <h3>no tasks! add more :)</h3>
         : <div>
-            <button onClick={() => this.setState({hideComplete: !this.state.hideComplete})}>
-              {this.state.hideComplete ? 'show completed' : 'hide completed'}</button>
+            <Button onClick={() => this.setState({hideComplete: !this.state.hideComplete})}>
+              {this.state.hideComplete ? 'show completed' : 'hide completed'}</Button>
             { this.mapTasks() }
           </div>
         }
