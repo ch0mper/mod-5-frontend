@@ -37,7 +37,7 @@ class _Home extends Component {
         <Cell height={19} width={1}>
           <div class='list-card'>
             { this.props.dailies &&
-            < DailyListContainer tasks={this.props.dailies} />
+            < DailyListContainer />
             }
           </div>
         </Cell>
@@ -45,7 +45,7 @@ class _Home extends Component {
         <Cell height={20} width={2}>
           <div class='list-card'>
             { this.props.tasks &&
-            < MainListContainer tasks={this.props.tasks} rollover={this.props.rollover} />
+            < MainListContainer />
             }
           </div>
         </Cell>
@@ -55,7 +55,7 @@ class _Home extends Component {
         <Cell width={1}>
           <div class='list-card' style={{'margin-top':'10em'}}>
             { this.props.backlog &&
-            < BacklogContainer tasks={this.props.backlog} />
+            < BacklogContainer />
             }
           </div>
         </Cell>

@@ -1,5 +1,5 @@
 import history from './history'
-import { LOGIN, SIGNUP, LOGOUT, GET_TASKS, GET_BACKLOG, GET_DAILIES, GET_ROLLOVER, ADD_TASK, ADD_DAILIES, UPDATE_TASK, MOVE_TO_BACKLOG, DELETE_TASK, UPDATE_BACKLOG, MOVE_TO_MAINLIST, UPDATE_DAILIES } from './types'
+import { LOGIN, SIGNUP, LOGOUT, GET_TASKS, GET_BACKLOG, GET_DAILIES, GET_ROLLOVER, ADD_TASK, ADD_DAILIES, UPDATE_TASK, MOVE_TO_BACKLOG, DELETE_TASK, UPDATE_BACKLOG, MOVE_TO_MAINLIST, UPDATE_DAILIES, UPDATE_ROLLOVER, MOVE_ROLL_TO_BACKLOG, MOVE_ROLL_TO_MAIN } from './types'
 
 export const reducer = function(currentState, action){
   const newState = { ...currentState }
@@ -35,7 +35,7 @@ export const reducer = function(currentState, action){
       newState.rollover = action.payload
     break;
     case ADD_TASK:
-      newState.tasks = [...newState.tasks, action.payload]
+      newState.tasks = [action.payload, ...newState.tasks]
     break;
     case ADD_DAILIES:
       newState.dailies = [...newState.dailies, action.payload]
@@ -86,6 +86,27 @@ export const reducer = function(currentState, action){
           ...action.payload
         }
       })
+    break;
+    case UPDATE_ROLLOVER:
+      newState.rollover = newState.rollover.map( task => {
+        if (task._id !== action.payload._id) {
+          return task
+        }
+        return {
+          ...task,
+          ...action.payload
+        }
+      })
+      newState.tasks = [...newState.tasks, action.payload]
+      newState.rollover = newState.rollover.filter(task => task._id !== action.payload._id)
+    break;
+    case MOVE_ROLL_TO_BACKLOG:
+      newState.backlog = [...newState.backlog, action.payload]
+      newState.rollover = newState.rollover.filter(task => task._id !== action.payload._id)
+    break;
+    case MOVE_ROLL_TO_MAIN:
+      newState.tasks = [...newState.tasks, action.payload]
+      newState.rollover = newState.rollover.filter(task => task._id !== action.payload._id)
     break;
   }
   return newState

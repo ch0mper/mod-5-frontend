@@ -19,6 +19,7 @@ export const actions = {
       .then( res => res.json() )
       .then( result => {
         // if result.error show stuff else
+
         localStorage.setItem('token', result.token)
         dispatch({
           type: LOGIN,
@@ -94,6 +95,7 @@ export const actions = {
           isPriority: false,
           isBacklog: false,
           isRecurring: `${recurringStatus}`, //true from daily, false from mainlist
+          streak: 0,
           dateCreated: new Date(Date.now() - 216e5),
           dateUpdated: new Date(Date.now() - 216e5),
           simpleDateUpdated: parseInt((new Date(Date.now() - 216e5)).toISOString().slice(0,10).replace(/-/g,""))
@@ -120,6 +122,7 @@ export const actions = {
         },
         body:JSON.stringify({
           isCompleted: !isCompletedStatus,
+          rolledOver: false,
           dateUpdated: new Date(Date.now() - 216e5),
           simpleDateUpdated: parseInt((new Date(Date.now() - 216e5)).toISOString().slice(0,10).replace(/-/g,""))
         })
@@ -192,6 +195,7 @@ export const actions = {
         },
         body:JSON.stringify({
           isBacklog: !backlogStatus,
+          rolledOver: false,
           dateUpdated: new Date(Date.now() - 216e5),
           simpleDateUpdated: parseInt((new Date(Date.now() - 216e5)).toISOString().slice(0,10).replace(/-/g,""))
         })

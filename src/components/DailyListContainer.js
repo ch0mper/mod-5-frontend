@@ -27,4 +27,8 @@ class DailyListContainer extends Component {
   }
 };
 
-export default connect(null, actions)(DailyListContainer);
+const mapStateToProps = state => ({
+  tasks: state.dailies
+})
+
+export default connect(mapStateToProps, actions)(DailyListContainer);
