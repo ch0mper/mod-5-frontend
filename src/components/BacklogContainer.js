@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
 import { actions } from '../state/actions'
+import { Button, Input } from './UI/StyledComponents'
 import { UPDATE_BACKLOG, MOVE_TO_MAINLIST } from '../state/types'
 import ListItem from './ListItem';
 
@@ -27,8 +28,8 @@ class BacklogContainer extends Component {
     return(
       <div>
         <h3>backlog</h3>
-        <button onClick={() => this.setState({hideComplete: !this.state.hideComplete})}>
-          {this.state.hideComplete ? 'show completed' : 'hide completed'}</button>
+        <Button onClick={() => this.setState({hideComplete: !this.state.hideComplete})}>
+          {this.state.hideComplete ? 'show completed' : 'hide completed'}</Button>
         { this.mapTasks() }
      </div>
    );
