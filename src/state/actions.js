@@ -93,7 +93,7 @@ export const actions = {
           userId: userId,
           isCompleted: false,
           isPriority: false,
-          // isBacklog: false,
+          isBacklog: false,
           isRecurring: `${recurringStatus}`, //true from daily, false from mainlist
           streak: 0,
           dateCreated: new Date(Date.now() - 216e5),

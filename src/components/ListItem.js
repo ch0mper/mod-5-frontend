@@ -2,6 +2,9 @@ import React from 'react';
 // import inlineEdit from './UI/inlineEdit'
 
 const ListItem = props => (
+
+  (!props.hideComplete || !props.task.isCompleted) &&
+
   <div>
 
   { (!props.task.isRecurring || !props.task.rolledOver) &&
