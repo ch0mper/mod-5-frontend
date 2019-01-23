@@ -1,43 +1,78 @@
-import React from 'react';
-// import inlineEdit from './UI/inlineEdit'
+import React, { Component } from 'react';
+import EditableLabel from 'react-inline-editing';
+import { connect } from 'react-redux'
 
-const ListItem = props => (
+// import { actions } from '../state/actions'
+import { UPDATE_TASK } from '../state/types'
 
-  (!props.hideComplete || !props.task.isCompleted) &&
+class ListItem extends Component {
 
-  <div>
+  constructor(props){
+    super(props);
 
-  { (!props.task.isRecurring && !props.task.isCompleted) &&
-    <span class='bullet' onClick={props.toggleBacklog}>
-      { props.task.isBacklog ? '⤴' : '⤹' }
-      <span class="tooltiptext">{ props.task.isBacklog ? 'move to main' : 'move to backlog' }</span>
-    </span>
+    this._handleFocus = this._handleFocus.bind(this);
+    this._handleFocusOut = this._handleFocusOut.bind(this);
   }
 
-  { props.task.rolledOver &&
-    <span class='bullet' onClick={props.moveToMain}>⇃
-      <span class="tooltiptext">move to main list</span>
-    </span>
+  _handleFocus(text) {
+    console.log('editing: ' + text);
   }
 
-  { (!props.task.isRecurring && !props.task.rolledOver && !props.task.isCompleted) &&
-    <span class='bullet' onClick={props.togglePriority}>
-      { props.task.isPriority ? '⭑' : '⭒' }
-    </span>
+  _handleFocusOut(text) {
+    console.log('updated content: ' + text);
+    // this.props.updateTask(this.props.task._id, text)
   }
 
-  <span class='bullet' onClick={props.toggleComplete} style={{color: props.task.isCompleted ? 'lightgrey' : 'black'}}>
-    { props.task.isCompleted ? '☑' : '☐' }
-  </span>
+  render() {
+    return (
+      <div>
 
-  <span class='list-item'
-  style={{
-    textDecoration: props.task.isCompleted ? 'line-through' : 'none', color: props.task.isCompleted ? 'lightgrey' : 'black'}}>
-    {props.task.content} { !!props.task.streak && ` (${props.task.streak})`}
-  </span>
-  <span class='delete-icon' onClick={props.deleteTask} style={{color: props.task.isCompleted ? 'lightgrey' : 'black'}}>
-    ☒</span>
-  </div>
-);
+        {(!this.props.hideComplete || !this.props.task.isCompleted) &&
 
-export default ListItem;
+        <div style={{display:'flex', 'flex-direction':'row'}}>
+
+        { (!this.props.task.isRecurring && !this.props.task.isCompleted) &&
+          <span class='bullet' onClick={this.props.toggleBacklog}>
+            { this.props.task.isBacklog ? '⤴' : '⤹' }
+            <span class="tooltiptext">{ this.props.task.isBacklog ? 'move to today' : 'move to backlog' }</span>
+          </span>
+        }
+
+        { this.props.task.rolledOver &&
+          <span class='bullet' onClick={this.props.moveToMain}>⇃
+            <span class="tooltiptext">move to main list</span>
+          </span>
+        }
+
+        { (!this.props.task.isRecurring && !this.props.task.rolledOver && !this.props.task.isCompleted) &&
+          <span class='bullet' onClick={this.props.togglePriority}>
+            { this.props.task.isPriority ? '⭑' : '⭒' }
+          </span>
+        }
+
+        <span class='bullet' onClick={this.props.toggleComplete} style={{color: this.props.task.isCompleted ? 'lightgrey' : 'black'}}>
+          { this.props.task.isCompleted ? '☑' : '☐' }
+        </span>
+
+        <span class='list-item'
+        style={{
+          textDecoration: this.props.task.isCompleted ? 'line-through' : 'none', color: this.props.task.isCompleted ? 'lightgrey' : 'black'}}>
+          {this.props.task.content}
+        </span>
+        <span>
+          { !!this.props.task.streak && ` (${this.props.task.streak})`}
+        </span>
+        <span class='delete-icon' onClick={this.props.deleteTask} style={{color: this.props.task.isCompleted ? 'lightgrey' : 'black'}}>
+          ☒</span>
+        </div>
+      }
+      </div>
+    )
+  }
+};
+
+export default connect(null)(ListItem);
+
+// <EditableLabel text={this.props.task.content}
+//   onFocus={this._handleFocus}
+//   onFocusOut={this._handleFocusOut}/>

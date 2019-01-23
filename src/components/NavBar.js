@@ -25,4 +25,8 @@ class _NavBar extends Component {
   }
 }
 
-export const NavBar = connect(null, actions)(_NavBar)
+const mapStateToProps = state => ({
+  firstName: state.firstName
+})
+
+export const NavBar = connect(mapStateToProps, actions)(_NavBar)

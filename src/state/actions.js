@@ -1,4 +1,4 @@
-import { LOGIN, SIGNUP, LOGOUT, DELETE_TASK } from './types'
+import { LOGIN, SIGNUP, LOGOUT, SET_LOGGEDIN, DELETE_TASK, UPDATE_TASK } from './types'
 
 export const actions = {
 
@@ -59,6 +59,17 @@ export const actions = {
     return ({ type: LOGOUT })
   },
 
+  setLoggedin(){
+    return ({ type: SET_LOGGEDIN })
+    // setTimeout(() => {return ({ type: SET_LOGGEDIN });}, 1)
+    // return dispatch => {
+    //   dispatch({type: 'FETCHING_ITEMS'}); // Will throw error
+    //
+    //   setTimeout(() => { dispatch({type: 'FETCHING_ITEMS'}); }, 1); // Works flawlessly
+    //
+    // }
+  },
+
   getTasks(userId, typeOfTasks, action_type){
     return function(dispatch, getState){
       fetch(`http://localhost:5000/api/users/${userId}/${typeOfTasks}`, {
@@ -80,7 +91,7 @@ export const actions = {
 
   addTask(input, userId, recurringStatus, action_type){
     return function(dispatch, getState){
-      console.log(recurringStatus);;
+      console.log(recurringStatus, input);;
       fetch('http://localhost:5000/api/tasks',{
         method:'POST',
         headers:{
@@ -103,8 +114,35 @@ export const actions = {
       })
       .then( res => res.json() )
       .then( result => {
+        console.log(result)
         dispatch({
           type: action_type, //ADD_TASK or ADD_DAILIES
+          payload: result
+        })
+      })
+    }
+  },
+
+  updateTask(id, input){
+    console.log('hit action creator', id, input)
+    return function(dispatch, getState){
+      fetch(`http://localhost:5000/api/tasks/${id}`,{
+        method:'PATCH',
+        headers:{
+          Authorization: `${localStorage.getItem('token')}`,
+          'Content-Type':'application/json',
+          Accept: 'application/json'
+        },
+        body:JSON.stringify({
+          content: input,
+          dateUpdated: new Date(Date.now() - 216e5),
+          simpleDateUpdated: parseInt((new Date(Date.now() - 216e5)).toISOString().slice(0,10).replace(/-/g,""))
+        })
+      })
+      .then( res => res.json() )
+      .then( result => {
+        dispatch({
+          type: UPDATE_TASK,
           payload: result
         })
       })

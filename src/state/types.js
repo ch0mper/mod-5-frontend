@@ -1,6 +1,7 @@
 export const LOGIN = 'LOGIN'
 export const SIGNUP = 'SIGNUP'
 export const LOGOUT = 'LOGOUT'
+export const SET_LOGGEDIN = 'SET_LOGGEDIN'
 export const GET_TASKS = 'GET_TASKS'
 export const GET_BACKLOG = 'GET_BACKLOG'
 export const GET_DAILIES = 'GET_DAILIES'

@@ -10,6 +10,7 @@ import { Welcome } from './components/Welcome';
 import { Home } from './components/Home';
 import BacklogContainer from './components/BacklogContainer';
 import { NavBar } from './components/NavBar';
+import test from './components/test';
 
 class App extends Component {
   render() {
@@ -18,6 +19,7 @@ class App extends Component {
         < NavBar />
         <Router history={history}>
           <Switch>
+            <Route exact path="/test" component={test} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/signup" component={Signup} />
             <Route exact path="/welcome" component={Welcome} />
