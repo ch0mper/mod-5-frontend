@@ -2,6 +2,7 @@ import styled, { css } from 'styled-components'
 
 export const Button = styled.button`
 background: transparent;
+height: 2em;
 border-radius: 4px;
 border: 2px solid palevioletred;
 color: palevioletred;

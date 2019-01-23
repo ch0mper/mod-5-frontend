@@ -1,4 +1,4 @@
-import { LOGIN, SIGNUP, LOGOUT, SET_LOGGEDIN, DELETE_TASK, UPDATE_TASK } from './types'
+import { LOGIN, SIGNUP, LOGOUT, DELETE_TASK, UPDATE_TASK } from './types'
 
 export const actions = {
 
@@ -17,9 +17,8 @@ export const actions = {
         })
       })
       .then( res => res.json() )
+      // if result.error show stuff else
       .then( result => {
-        // if result.error show stuff else
-
         localStorage.setItem('token', result.token)
         dispatch({
           type: LOGIN,
@@ -59,17 +58,6 @@ export const actions = {
     return ({ type: LOGOUT })
   },
 
-  setLoggedin(){
-    return ({ type: SET_LOGGEDIN })
-    // setTimeout(() => {return ({ type: SET_LOGGEDIN });}, 1)
-    // return dispatch => {
-    //   dispatch({type: 'FETCHING_ITEMS'}); // Will throw error
-    //
-    //   setTimeout(() => { dispatch({type: 'FETCHING_ITEMS'}); }, 1); // Works flawlessly
-    //
-    // }
-  },
-
   getTasks(userId, typeOfTasks, action_type){
     return function(dispatch, getState){
       fetch(`http://localhost:5000/api/users/${userId}/${typeOfTasks}`, {
@@ -107,6 +95,7 @@ export const actions = {
           isBacklog: false,
           isRecurring: `${recurringStatus}`, //true from daily, false from mainlist
           streak: 0,
+          suggested: 0,
           dateCreated: new Date(Date.now() - 216e5),
           dateUpdated: new Date(Date.now() - 216e5),
           simpleDateUpdated: parseInt((new Date(Date.now() - 216e5)).toISOString().slice(0,10).replace(/-/g,""))
@@ -123,7 +112,7 @@ export const actions = {
     }
   },
 
-  updateTask(id, input){
+  updateTaskContent(id, input){
     console.log('hit action creator', id, input)
     return function(dispatch, getState){
       fetch(`http://localhost:5000/api/tasks/${id}`,{
@@ -160,6 +149,7 @@ export const actions = {
         },
         body:JSON.stringify({
           isCompleted: !isCompletedStatus,
+          isBacklog: false,
           rolledOver: false,
           dateUpdated: new Date(Date.now() - 216e5),
           simpleDateUpdated: parseInt((new Date(Date.now() - 216e5)).toISOString().slice(0,10).replace(/-/g,""))
@@ -234,6 +224,7 @@ export const actions = {
         body:JSON.stringify({
           isBacklog: !backlogStatus,
           rolledOver: false,
+          isSuggested: false,
           dateUpdated: new Date(Date.now() - 216e5),
           simpleDateUpdated: parseInt((new Date(Date.now() - 216e5)).toISOString().slice(0,10).replace(/-/g,""))
         })

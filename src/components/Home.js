@@ -9,6 +9,7 @@ import DailyListContainer from './DailyListContainer';
 import BacklogContainer from './BacklogContainer';
 import { TodaysDate } from './TodaysDate';
 import SuggestionContainer from './SuggestionContainer';
+import { NavBar } from './NavBar';
 import { GET_TASKS, GET_BACKLOG, GET_DAILIES, GET_ROLLOVER } from '../state/types'
 
 class _Home extends Component {
@@ -18,15 +19,21 @@ class _Home extends Component {
     this.props.getTasks(localStorage.currentUserId, 'backlog', GET_BACKLOG)
     this.props.getTasks(localStorage.currentUserId, 'dailies', GET_DAILIES)
     this.props.getTasks(localStorage.currentUserId, 'rollover', GET_ROLLOVER)
-    this.props.setLoggedin()
+    // this.props.setLoggedin()
+  }
+
+  suggestTask = () => {
+    let task = this.props.backlog.find(task => task.isSuggested)
+    return task;
   }
 
   render() {
     return (
       <div>
       <Container>
-        { this.props.firstName &&
-          <p class='rainbow'>hi {this.props.firstName} !!</p>
+      < NavBar />
+        { localStorage.firstName &&
+          <p class='rainbow'>hi {localStorage.firstName} !!</p>
         }
       </Container>
 
@@ -43,11 +50,13 @@ class _Home extends Component {
             }
           </div>
         </Cell>
-        <Cell height={2} width={1}>
-        <div class='list-card'>
-        < SuggestionContainer/>
-        </div>
-        </Cell>
+        { this.suggestTask() &&
+          <Cell height={2} width={1}>
+            <div class='list-card'>
+            < SuggestionContainer/>
+            </div>
+          </Cell>
+        }
 
         <Cell height={20} width={2}>
           <div class='list-card'>
@@ -74,7 +83,6 @@ class _Home extends Component {
 }
 
 const mapStateToProps = state => ({
-  firstName: state.firstName,
   tasks: state.tasks,
   backlog: state.backlog,
   dailies: state.dailies,

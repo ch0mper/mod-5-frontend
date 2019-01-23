@@ -8,9 +8,10 @@ import ListItem from './ListItem';
 class BacklogContainer extends Component {
 
   mapTasks = () => {
-    this.props.tasks.sort(function(a,b){return b.isPriority-a.isPriority});
-    this.props.tasks.sort(function(a,b){return a.isCompleted-b.isCompleted});
-    return this.props.tasks.map( task => (
+    let tasks = this.props.tasks.filter(task => !task.isSuggested)
+    tasks.sort(function(a,b){return b.isPriority-a.isPriority});
+    tasks.sort(function(a,b){return a.isCompleted-b.isCompleted});
+    return tasks.map( task => (
       < ListItem task={task}
       toggleComplete={() => this.props.toggleTaskComplete(task._id, task.isCompleted, MOVE_TO_MAINLIST)}
       togglePriority={() => this.props.toggleTaskPriority(task._id, task.isPriority, UPDATE_BACKLOG)}

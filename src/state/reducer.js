@@ -1,5 +1,5 @@
 import history from './history'
-import { LOGIN, SIGNUP, LOGOUT, SET_LOGGEDIN, GET_TASKS, GET_BACKLOG, GET_DAILIES, GET_ROLLOVER, ADD_TASK, ADD_DAILIES, UPDATE_TASK, MOVE_TO_BACKLOG, DELETE_TASK, UPDATE_BACKLOG, MOVE_TO_MAINLIST, UPDATE_DAILIES, UPDATE_ROLLOVER, MOVE_ROLL_TO_BACKLOG, MOVE_ROLL_TO_MAIN } from './types'
+import { LOGIN, SIGNUP, LOGOUT, GET_TASKS, GET_BACKLOG, GET_DAILIES, GET_ROLLOVER, ADD_TASK, ADD_DAILIES, UPDATE_TASK, MOVE_TO_BACKLOG, DELETE_TASK, UPDATE_BACKLOG, MOVE_TO_MAINLIST, UPDATE_DAILIES, UPDATE_ROLLOVER, MOVE_ROLL_TO_BACKLOG, MOVE_ROLL_TO_MAIN } from './types'
 
 export const reducer = function(currentState, action){
   const newState = { ...currentState }
@@ -8,7 +8,7 @@ export const reducer = function(currentState, action){
     case LOGIN:
       localStorage.currentUserId = action.payload.userId
       localStorage.firstName = action.payload.firstName
-      history.push('/home')
+      history.push('/today')
     break;
     case SIGNUP:
       localStorage.currentUserId = action.payload.userId
@@ -20,11 +20,7 @@ export const reducer = function(currentState, action){
       newState.tasks = []
       newState.dailies = []
       newState.backlog = []
-      newState.firstName = ''
       history.push('/home')
-    break;
-    case SET_LOGGEDIN:
-      newState.firstName = localStorage.firstName
     break;
     case GET_TASKS:
       newState.tasks = action.payload

@@ -8,6 +8,12 @@ class _Login extends Component {
   render() {
     return (
       <Container>
+
+      {this.props.show &&
+        <div class='modal'>
+        <section class='modal-main'>
+
+        <div style={{'text-align': 'right'}}><Button onClick={this.props.handleClose}>✕</Button></div>
         <form onSubmit={e => this.props.login(e)} >
           <div>
             <label>Email </label>
@@ -19,6 +25,10 @@ class _Login extends Component {
           </div>
           <Button type="submit">Login</Button>
         </form>
+
+        </section>
+        </div>
+      }
       </Container>
     );
   }
