@@ -2,13 +2,17 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
 import { actions } from '../state/actions'
+import { UPDATE_DAILIES } from '../state/types';
+import ListItem from './ListItem';
 
 class SuggestionContainer extends Component {
 
-  getDate = () => {
-    let today = new Date();
-    let date = (today.getMonth() + 1) + '-' + today.getDate() + '-' + today.getFullYear();
-    return date;
+  // using redux state for backlog tasks
+
+  selectTask = () => {
+    let task = this.props.tasks.find(task => task.isSuggested)
+    // show the task where .isSuggested is true
+    return < ListItem task={task} />
   }
 
   render() {
@@ -17,10 +21,15 @@ class SuggestionContainer extends Component {
       <h3>
         suggestion
      </h3>
-     <p>a random selection from backlog</p>
+     {this.selectTask()}
      </div>
    );
   }
 };
 
-export default connect(null, actions)(SuggestionContainer);
+
+const mapStateToProps = state => ({
+  tasks: state.backlog
+})
+
+export default connect(mapStateToProps, actions)(SuggestionContainer);

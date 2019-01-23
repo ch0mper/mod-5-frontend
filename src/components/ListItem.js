@@ -1,9 +1,5 @@
 import React, { Component } from 'react';
 import EditableLabel from 'react-inline-editing';
-import { connect } from 'react-redux'
-
-// import { actions } from '../state/actions'
-import { UPDATE_TASK } from '../state/types'
 
 class ListItem extends Component {
 
@@ -20,12 +16,12 @@ class ListItem extends Component {
 
   _handleFocusOut(text) {
     console.log('updated content: ' + text);
-    // this.props.updateTask(this.props.task._id, text)
+    this.props.updateContent(this.props.task._id, text)
   }
 
   render() {
     return (
-      <div>
+      <div key={this.props.task._id}>
 
         {(!this.props.hideComplete || !this.props.task.isCompleted) &&
 
@@ -57,7 +53,12 @@ class ListItem extends Component {
         <span class='list-item'
         style={{
           textDecoration: this.props.task.isCompleted ? 'line-through' : 'none', color: this.props.task.isCompleted ? 'lightgrey' : 'black'}}>
-          {this.props.task.content}
+          { !this.props.task.isRecurring ?
+            <EditableLabel text={this.props.task.content}
+              onFocus={this._handleFocus}
+              onFocusOut={this._handleFocusOut}/>
+            : <span>{this.props.task.content}</span>
+          }
         </span>
         <span>
           { !!this.props.task.streak && ` (${this.props.task.streak})`}
@@ -71,8 +72,4 @@ class ListItem extends Component {
   }
 };
 
-export default connect(null)(ListItem);
-
-// <EditableLabel text={this.props.task.content}
-//   onFocus={this._handleFocus}
-//   onFocusOut={this._handleFocusOut}/>
+export default ListItem;

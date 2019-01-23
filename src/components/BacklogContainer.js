@@ -12,6 +12,7 @@ class BacklogContainer extends Component {
     this.props.tasks.sort(function(a,b){return a.isCompleted-b.isCompleted});
     return this.props.tasks.map( task => (
       < ListItem task={task}
+      updateContent={(id, input) => this.props.updateTaskContent(id, input)}
       toggleComplete={() => this.props.toggleTaskComplete(task._id, task.isCompleted, MOVE_TO_MAINLIST)}
       togglePriority={() => this.props.toggleTaskPriority(task._id, task.isPriority, UPDATE_BACKLOG)}
       deleteTask={() => this.props.deleteTask(task._id)}

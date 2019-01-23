@@ -107,6 +107,7 @@ export const actions = {
           isBacklog: false,
           isRecurring: `${recurringStatus}`, //true from daily, false from mainlist
           streak: 0,
+          suggested: 0,
           dateCreated: new Date(Date.now() - 216e5),
           dateUpdated: new Date(Date.now() - 216e5),
           simpleDateUpdated: parseInt((new Date(Date.now() - 216e5)).toISOString().slice(0,10).replace(/-/g,""))
@@ -123,7 +124,7 @@ export const actions = {
     }
   },
 
-  updateTask(id, input){
+  updateTaskContent(id, input){
     console.log('hit action creator', id, input)
     return function(dispatch, getState){
       fetch(`http://localhost:5000/api/tasks/${id}`,{
@@ -160,6 +161,7 @@ export const actions = {
         },
         body:JSON.stringify({
           isCompleted: !isCompletedStatus,
+          isBacklog: false,
           rolledOver: false,
           dateUpdated: new Date(Date.now() - 216e5),
           simpleDateUpdated: parseInt((new Date(Date.now() - 216e5)).toISOString().slice(0,10).replace(/-/g,""))
@@ -234,6 +236,7 @@ export const actions = {
         body:JSON.stringify({
           isBacklog: !backlogStatus,
           rolledOver: false,
+          isSuggested: false,
           dateUpdated: new Date(Date.now() - 216e5),
           simpleDateUpdated: parseInt((new Date(Date.now() - 216e5)).toISOString().slice(0,10).replace(/-/g,""))
         })

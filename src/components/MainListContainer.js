@@ -29,6 +29,7 @@ class MainListContainer extends Component {
     this.props.tasks.sort(function(a,b){return a.isCompleted-b.isCompleted});
     return this.props.tasks.map( task => (
       < ListItem task={task} hideComplete={this.state.hideComplete}
+      updateContent={(id, input) => this.props.updateTaskContent(id, input)}
       toggleComplete={() => this.props.toggleTaskComplete(task._id, task.isCompleted, UPDATE_TASK)}
       togglePriority={() => this.props.toggleTaskPriority(task._id, task.isPriority, UPDATE_TASK)}
       deleteTask={() => this.props.deleteTask(task._id)}
@@ -46,13 +47,18 @@ class MainListContainer extends Component {
           </div>
         }
         <h3 style={{'margin-top': '1em'}}>all the things</h3>
+
+        <div style={{display:'flex', 'flex-direction':'row'}}>
         < CreateMainListItem />
+        { !!this.props.tasks.length &&
+          <Button style={{'margin-top':'1.2em'}} onClick={() => this.setState({hideComplete: !this.state.hideComplete})}>
+            {this.state.hideComplete ? 'O' : 'X'}</Button>
+        }
+        </div>
 
         { !this.props.tasks.length ?
           <h3>no tasks! add more :)</h3>
         : <div>
-            <Button onClick={() => this.setState({hideComplete: !this.state.hideComplete})}>
-              {this.state.hideComplete ? 'show completed' : 'hide completed'}</Button>
             { this.mapTasks() }
           </div>
         }

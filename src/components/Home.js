@@ -44,9 +44,11 @@ class _Home extends Component {
           </div>
         </Cell>
         <Cell height={2} width={1}>
-        <div class='list-card'>
-        < SuggestionContainer/>
-        </div>
+          <div class='list-card'>
+            { !!this.props.backlog.length &&
+              < SuggestionContainer/>
+            }
+          </div>
         </Cell>
 
         <Cell height={20} width={2}>
