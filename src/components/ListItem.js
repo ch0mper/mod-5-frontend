@@ -27,33 +27,47 @@ class ListItem extends Component {
 
         <div style={{display:'flex', 'flex-direction':'row'}}>
 
-        { (!this.props.task.isRecurring && !this.props.task.isCompleted) &&
+        { (!this.props.task.isRecurring && !this.props.task.isCompleted && !this.props.task.isSuggested) &&
           <span class='bullet' onClick={this.props.toggleBacklog}>
             { this.props.task.isBacklog ? '⤴' : '⤹' }
             <span class="tooltiptext">{ this.props.task.isBacklog ? 'move to today' : 'move to backlog' }</span>
           </span>
         }
 
-        { this.props.task.rolledOver &&
-          <span class='bullet' onClick={this.props.moveToMain}>⇃
-            <span class="tooltiptext">move to main list</span>
+        { this.props.task.isSuggested &&
+          <span class='bullet' onClick={this.props.toggleBacklog}>⤹
+            <span class="tooltiptext">keep for later</span>
           </span>
         }
 
-        { (!this.props.task.isRecurring && !this.props.task.rolledOver && !this.props.task.isCompleted) &&
+        { this.props.task.rolledOver &&
+          <span class='bullet' onClick={this.props.moveToMain}>⇃
+            <span class="tooltiptext">move to today</span>
+          </span>
+        }
+
+        { this.props.task.isSuggested &&
+          <span class='bullet' onClick={this.props.moveToMain}>⤴
+            <span class="tooltiptext">move to today</span>
+          </span>
+        }
+
+        { (!this.props.task.isRecurring && !this.props.task.rolledOver && !this.props.task.isCompleted && !this.props.task.isSuggested) &&
           <span class='bullet' onClick={this.props.togglePriority}>
             { this.props.task.isPriority ? '⭑' : '⭒' }
           </span>
         }
 
-        <span class='bullet' onClick={this.props.toggleComplete} style={{color: this.props.task.isCompleted ? 'lightgrey' : 'black'}}>
-          { this.props.task.isCompleted ? '☑' : '☐' }
-        </span>
+        { !this.props.task.isSuggested &&
+          <span class='bullet' onClick={this.props.toggleComplete} style={{color: this.props.task.isCompleted ? 'lightgrey' : 'black'}}>
+            { this.props.task.isCompleted ? '☑' : '☐' }
+          </span>
+        }
 
         <span class='list-item'
         style={{
           textDecoration: this.props.task.isCompleted ? 'line-through' : 'none', color: this.props.task.isCompleted ? 'lightgrey' : 'black'}}>
-          { !this.props.task.isRecurring ?
+          { !this.props.task.isRecurring && !this.props.task.isBacklog ?
             <EditableLabel text={this.props.task.content}
               onFocus={this._handleFocus}
               onFocusOut={this._handleFocusOut}/>

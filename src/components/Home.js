@@ -21,6 +21,11 @@ class _Home extends Component {
     this.props.setLoggedin()
   }
 
+  suggestTask = () => {
+    let task = this.props.backlog.find(task => task.isSuggested)
+    return task;
+  }
+
   render() {
     return (
       <div>
@@ -43,13 +48,13 @@ class _Home extends Component {
             }
           </div>
         </Cell>
-        <Cell height={2} width={1}>
-          <div class='list-card'>
-            { !!this.props.backlog.length &&
-              < SuggestionContainer/>
-            }
-          </div>
-        </Cell>
+        { this.suggestTask() &&
+          <Cell height={2} width={1}>
+            <div class='list-card'>
+            < SuggestionContainer/>
+            </div>
+          </Cell>
+        }
 
         <Cell height={20} width={2}>
           <div class='list-card'>
