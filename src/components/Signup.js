@@ -8,6 +8,13 @@ class _Signup extends Component {
   render() {
     return (
       <Container>
+
+      {this.props.show &&
+        <div class='modal'>
+        <section class='modal-main'>
+
+        <div style={{'text-align': 'right'}}><Button onClick={this.props.handleClose}>✕</Button></div>
+
         <form onSubmit={e => this.props.signup(e)} >
           <div>
             <label>First Name </label>
@@ -23,6 +30,10 @@ class _Signup extends Component {
           </div>
           <Button type="submit">Let's go!</Button>
         </form>
+
+        </section>
+        </div>
+      }
       </Container>
     );
   }

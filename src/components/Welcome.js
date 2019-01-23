@@ -1,10 +1,15 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+import { NavBar } from './NavBar';
+import { Container } from './UI/StyledComponents'
+
 class _Welcome extends Component {
   render() {
     return (
-      <div>
+      <Container>
+      < NavBar />
+
       { localStorage.token ?
       <div>
         <h2>welcome for new sign ups</h2>
@@ -12,13 +17,9 @@ class _Welcome extends Component {
       </div>
       : <h3>must be logged in :)</h3>
       }
-      </div>
+      </Container>
     );
   }
 }
 
-const mapStateToProps = state => ({
-  firstName: state.firstName
-})
-
-export const Welcome = connect(mapStateToProps)(_Welcome)
+export const Welcome = connect(null)(_Welcome)

@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
 import { actions } from '../state/actions'
-import { Button, Input } from './UI/StyledComponents'
+import { Button } from './UI/StyledComponents'
 import { UPDATE_TASK, MOVE_TO_BACKLOG, UPDATE_ROLLOVER, MOVE_ROLL_TO_MAIN, MOVE_ROLL_TO_BACKLOG } from '../state/types'
 import ListItem from './ListItem';
 import CreateMainListItem from './CreateMainListItem';
@@ -51,8 +51,9 @@ class MainListContainer extends Component {
         <div style={{display:'flex', 'flex-direction':'row'}}>
         < CreateMainListItem />
         { !!this.props.tasks.length &&
-          <Button style={{'margin-top':'1.2em'}} onClick={() => this.setState({hideComplete: !this.state.hideComplete})}>
-            {this.state.hideComplete ? 'O' : 'X'}</Button>
+          <Button style={{'margin-top':'1.25em'}} onClick={() => this.setState({hideComplete: !this.state.hideComplete})}>
+            {this.state.hideComplete ? 'show completed' : 'hide completed'}
+            </Button>
         }
         </div>
 

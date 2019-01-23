@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
 import { actions } from '../state/actions'
-import { UPDATE_DAILIES, MOVE_TO_MAINLIST, UPDATE_BACKLOG } from '../state/types';
+import { MOVE_TO_MAINLIST, UPDATE_BACKLOG } from '../state/types';
 import ListItem from './ListItem';
 
 class SuggestionContainer extends Component {

@@ -9,6 +9,7 @@ import DailyListContainer from './DailyListContainer';
 import BacklogContainer from './BacklogContainer';
 import { TodaysDate } from './TodaysDate';
 import SuggestionContainer from './SuggestionContainer';
+import { NavBar } from './NavBar';
 import { GET_TASKS, GET_BACKLOG, GET_DAILIES, GET_ROLLOVER } from '../state/types'
 
 class _Home extends Component {
@@ -18,7 +19,7 @@ class _Home extends Component {
     this.props.getTasks(localStorage.currentUserId, 'backlog', GET_BACKLOG)
     this.props.getTasks(localStorage.currentUserId, 'dailies', GET_DAILIES)
     this.props.getTasks(localStorage.currentUserId, 'rollover', GET_ROLLOVER)
-    this.props.setLoggedin()
+    // this.props.setLoggedin()
   }
 
   suggestTask = () => {
@@ -30,8 +31,9 @@ class _Home extends Component {
     return (
       <div>
       <Container>
-        { this.props.firstName &&
-          <p class='rainbow'>hi {this.props.firstName} !!</p>
+      < NavBar />
+        { localStorage.firstName &&
+          <p class='rainbow'>hi {localStorage.firstName} !!</p>
         }
       </Container>
 
@@ -81,7 +83,6 @@ class _Home extends Component {
 }
 
 const mapStateToProps = state => ({
-  firstName: state.firstName,
   tasks: state.tasks,
   backlog: state.backlog,
   dailies: state.dailies,

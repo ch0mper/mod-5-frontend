@@ -1,4 +1,4 @@
-import { LOGIN, SIGNUP, LOGOUT, SET_LOGGEDIN, DELETE_TASK, UPDATE_TASK } from './types'
+import { LOGIN, SIGNUP, LOGOUT, DELETE_TASK, UPDATE_TASK } from './types'
 
 export const actions = {
 
@@ -17,9 +17,8 @@ export const actions = {
         })
       })
       .then( res => res.json() )
+      // if result.error show stuff else
       .then( result => {
-        // if result.error show stuff else
-
         localStorage.setItem('token', result.token)
         dispatch({
           type: LOGIN,
@@ -57,17 +56,6 @@ export const actions = {
 
   logout(){
     return ({ type: LOGOUT })
-  },
-
-  setLoggedin(){
-    return ({ type: SET_LOGGEDIN })
-    // setTimeout(() => {return ({ type: SET_LOGGEDIN });}, 1)
-    // return dispatch => {
-    //   dispatch({type: 'FETCHING_ITEMS'}); // Will throw error
-    //
-    //   setTimeout(() => { dispatch({type: 'FETCHING_ITEMS'}); }, 1); // Works flawlessly
-    //
-    // }
   },
 
   getTasks(userId, typeOfTasks, action_type){
