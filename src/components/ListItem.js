@@ -30,7 +30,7 @@ class ListItem extends Component {
         { (!this.props.task.isRecurring && !this.props.task.isCompleted && !this.props.task.isSuggested) &&
           <span class='bullet' onClick={this.props.toggleBacklog}>
             { this.props.task.isBacklog ? '⤴' : '⤹' }
-            <span class="tooltiptext">{ this.props.task.isBacklog ? 'move to today' : 'move to backlog' }</span>
+            <span class="tooltiptext">{ this.props.task.isBacklog ? 'move to today' : 'save for later' }</span>
           </span>
         }
 
@@ -59,14 +59,14 @@ class ListItem extends Component {
         }
 
         { !this.props.task.isSuggested &&
-          <span class='bullet' onClick={this.props.toggleComplete} style={{color: this.props.task.isCompleted ? 'lightgrey' : 'black'}}>
+          <span class='bullet' onClick={this.props.toggleComplete} style={{color: this.props.task.isCompleted ? 'darkgrey' : 'black'}}>
             { this.props.task.isCompleted ? '☑' : '☐' }
           </span>
         }
 
         <span class='list-item'
         style={{
-          textDecoration: this.props.task.isCompleted ? 'line-through' : 'none', color: this.props.task.isCompleted ? 'lightgrey' : 'black'}}>
+          textDecoration: this.props.task.isCompleted ? 'line-through' : 'none'}}>
           { !this.props.task.isRecurring && !this.props.task.isBacklog ?
             <EditableLabel text={this.props.task.content}
               onFocus={this._handleFocus}
@@ -74,10 +74,10 @@ class ListItem extends Component {
             : <span>{this.props.task.content}</span>
           }
         </span>
-        <span>
-          { !!this.props.task.streak && ` (${this.props.task.streak})`}
+        <span style={{'margin-left':'8px'}}>
+          { !!this.props.task.streak && `(✓ × ${this.props.task.streak})`}
         </span>
-        <span class='delete-icon' onClick={this.props.deleteTask} style={{color: this.props.task.isCompleted ? 'lightgrey' : 'black'}}>
+        <span class='delete-icon' onClick={this.props.deleteTask} style={{color: 'darkgrey'}}>
           ☒</span>
         </div>
       }

@@ -42,16 +42,16 @@ class MainListContainer extends Component {
       <div>
         { !!this.props.rollover.length &&
           <div class='rollover-card'>
-          <h3>unfinished things from yesterday</h3>
+          <h3>From Yesterday</h3>
             { this.mapRollover() }
           </div>
         }
-        <h3 style={{'margin-top': '1em'}}>all the things</h3>
+        <h3 style={{'margin-top': '1em'}}>Today</h3>
 
         <div style={{display:'flex', 'flex-direction':'row'}}>
         < CreateMainListItem />
         { !!this.props.tasks.length &&
-          <Button style={{'margin-top':'1.25em'}} onClick={() => this.setState({hideComplete: !this.state.hideComplete})}>
+          <Button style={{'margin-top':'.85em'}} onClick={() => this.setState({hideComplete: !this.state.hideComplete})}>
             {this.state.hideComplete ? 'show completed' : 'hide completed'}
             </Button>
         }

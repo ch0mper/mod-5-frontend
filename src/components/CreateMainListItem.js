@@ -36,7 +36,7 @@ class CreateMainListItem extends Component {
           <Input
             ref={this.inputRef}
             type="text"
-            placeholder="more things"
+            placeholder="start typing..."
             onMouseEnter={() => {
               this.inputRef.current.focus()
             }}

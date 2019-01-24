@@ -17,13 +17,18 @@ export const actions = {
         })
       })
       .then( res => res.json() )
-      // if result.error show stuff else
       .then( result => {
-        localStorage.setItem('token', result.token)
-        dispatch({
-          type: LOGIN,
-          payload: result
-        })
+        if (result.error) {
+          dispatch({
+            type: 'LOGIN_ERROR', payload: result
+          })
+        } else {
+          localStorage.setItem('token', result.token)
+          dispatch({
+            type: LOGIN,
+            payload: result
+          })
+        }
       })
     }
   },

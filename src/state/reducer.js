@@ -10,6 +10,9 @@ export const reducer = function(currentState, action){
       localStorage.firstName = action.payload.firstName
       history.push('/today')
     break;
+    case 'LOGIN_ERROR':
+      newState.loginError = action.payload.error
+    break;
     case SIGNUP:
       localStorage.currentUserId = action.payload.userId
       localStorage.firstName = action.payload.firstName

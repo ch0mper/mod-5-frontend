@@ -18,10 +18,20 @@ class SuggestionContainer extends Component {
     />
   }
 
+  showDate = (task) => {
+    let day = this.props.task.simpleDateUpdated + ''
+    let date;
+    day[4] === '0'
+    ? date = `${day.slice(5, 6)}/${day.slice(6)}`
+    : date = `${day.slice(4, 6)}/${day.slice(6)}`
+    return date
+  }
+
   render() {
     return(
       <div>
-        <h3>suggestion</h3>
+        <h3>Just Try It!</h3>
+        <p style={{'margin-left':'1em', 'font-style':'italic'}}>You saved this on {this.showDate(this.props.task)}... try it today?</p>
         {this.selectTask()}
       </div>
    );
