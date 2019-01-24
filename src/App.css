@@ -28,6 +28,16 @@ h3 {
   margin-bottom: 2em;
 }
 
+.no-outline {
+  outline: none;
+  border: 1px solid #72d4a2;
+  border-radius: 4px;
+}
+
+.no-outline:focus {
+  background-color: #b9f4d6;
+}
+
 .typewriter {
   font-family: 'Roboto Mono', monospace;
   font-size: 72px;
@@ -38,6 +48,7 @@ h3 {
   margin-bottom: 1.5em;
   max-width: 65%;
   overflow: auto;
+  overflow-y: hidden;
   white-space: nowrap;
   border-right: .15em solid #72d4a2;
   animation:

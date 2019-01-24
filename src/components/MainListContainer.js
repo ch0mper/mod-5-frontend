@@ -50,7 +50,8 @@ class MainListContainer extends Component {
 
         <div style={{display:'flex', 'flex-direction':'row'}}>
         < CreateMainListItem />
-        { !!this.props.tasks.length &&
+
+        { !!this.props.tasks.filter(task => task.isCompleted).length &&
           <Button style={{'margin-top':'.85em'}} onClick={() => this.setState({hideComplete: !this.state.hideComplete})}>
             {this.state.hideComplete ? 'show completed' : 'hide completed'}
             </Button>

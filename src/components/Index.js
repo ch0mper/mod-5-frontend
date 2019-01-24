@@ -30,8 +30,7 @@ class Index extends Component {
 
         <div class="typewriter">a planning app.</div>
 
-        <div style={{'font-family':'Roboto Mono', 'font-size':'1.3em','font-weight':'400', 'margin-bottom':'.5em'}}>some words about what this is and how it works </div>
-        <div style={{'font-family':'Roboto Mono', 'font-size':'1.3em','font-weight':'400', 'margin-bottom':'3em'}}>with today, daily, later things blah blah.</div>
+        <div style={{'font-family':'Roboto Mono', 'font-size':'1.3em','font-weight':'400', 'margin-bottom':'3em'}}>Plan things. Do them. Just try it. </div>
         <Signup show={this.state.showSignup} handleClose={this.toggleSignup}/>
         <Login show={this.state.showLogin} handleClose={this.toggleLogin}/>
 
@@ -44,6 +43,7 @@ class Index extends Component {
 
 export default Index;
 
+// <div style={{'font-family':'Roboto Mono', 'font-size':'1.3em','font-weight':'400', 'margin-bottom':'3em'}}>with today, daily, later things blah blah.</div>
 // 1. Use the TODAY space to jot down anything on your mind.
 // 2. Oops, made a typo? Just click to edit.
 // 3. Choose 2 or 3 as your ⭑priority⭑ items for today.

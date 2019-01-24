@@ -68,7 +68,7 @@ class ListItem extends Component {
         style={{
           textDecoration: this.props.task.isCompleted ? 'line-through' : 'none'}}>
           { !this.props.task.isRecurring && !this.props.task.isBacklog ?
-            <EditableLabel text={this.props.task.content}
+            <EditableLabel text={this.props.task.content} inputClassName='no-outline'
               onFocus={this._handleFocus}
               onFocusOut={this._handleFocusOut}/>
             : <span>{this.props.task.content}</span>
