@@ -16,7 +16,7 @@ class _NavBar extends Component {
           <div class='title'>{localStorage.firstName}'s planner</div>
         </Cell>
         <Cell width={1}>
-          <Button onClick={() => this.props.logout()} style={{'margin-top':'.8em'}}>log out</Button>
+        <Button onClick={() => this.props.logout()} style={{'margin-top':'.8em'}}>log out</Button>
         </Cell>
       </Grid>
       </nav>
@@ -25,3 +25,17 @@ class _NavBar extends Component {
 }
 
 export const NavBar = connect(null, actions)(_NavBar)
+
+// <div class="dropdown">
+// <button class="dropbtn">
+// <img src={img} height="24" alt='loading' />
+// </button>
+// <div class="dropdown-content">
+// <a onClick={() => history.push('/today')}>today</a>
+// <a onClick={() => history.push('/demo')}>tomorrow</a>
+// <a onClick={() => this.props.createTasksForDemo(localStorage.currentUserId, 'dailies')}>demo-dailies</a>
+// <a onClick={() => this.props.createTasksForDemo(localStorage.currentUserId, 'rollover')}>demo-rollover</a>
+// <a onClick={() => this.props.createTasksForDemo(localStorage.currentUserId, 'suggestion')}>demo-suggest</a>
+// <a onClick={() => this.props.logout()}>log out</a>
+// </div>
+// </div>

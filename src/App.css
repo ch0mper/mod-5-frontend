@@ -4,9 +4,8 @@ body {
 }
 
 * {
-  /* font-family: 'PT Sans', sans-serif; */
   font-family: 'Montserrat', sans-serif;
-  font-size: 14px;
+  font-size: 1em;
   color: black;
 }
 
@@ -20,6 +19,13 @@ h3 {
   background: -webkit-linear-gradient(left, #269e61, #b9f4d6);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+
+.placeholder {
+  font-size: 1.4em;
+  color: #525252;
+  margin-left: .8em;
+  margin-bottom: 2em;
 }
 
 .typewriter {
@@ -76,11 +82,65 @@ h3 {
 
 /* Links inside the navbar */
 .navbar a {
-  float: left;
+  float: right;
   font-size: 16px;
   color: white;
   text-align: center;
   padding: 14px 16px;
+}
+
+.dropdown {
+  text-align: center;
+  /* float: center; */
+  /* overflow: hidden; */
+}
+
+/* Dropdown button */
+.dropdown .dropbtn {
+  font-size: 16px;
+  border: none;
+  outline: none;
+  padding: 14px;
+  background-color: inherit;
+  font-family: inherit; /* Important for vertical align on mobile phones */
+  margin: 0; /* Important for vertical align on mobile phones */
+}
+
+.navbar a:hover, .dropdown:hover .dropbtn {
+  background-color: #72d4a2;
+  cursor: pointer;
+}
+
+/* Dropdown content (hidden by default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  margin-left: 20px;
+  border-radius: 4px;
+  background-color: rgba(0, 0, 0, 0.8);
+  min-width: 140px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  float: none;
+  color: white;
+  margin-top: .5em;
+  margin-bottom: .5em;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.dropdown-content a:hover {
+  background-color: #72d4a2;
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+  display: block;
 }
 
 .title {

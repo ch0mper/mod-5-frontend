@@ -3,23 +3,24 @@ import { connect } from 'react-redux';
 import { actions } from '../state/actions'
 import { Grid, Cell } from "styled-css-grid";
 
-import { Container } from './UI/StyledComponents'
 import MainListContainer from './MainListContainer';
 import DailyListContainer from './DailyListContainer';
 import BacklogContainer from './BacklogContainer';
-import { TodaysDate } from './TodaysDate';
+import { TomorrowsDate } from './TomorrowsDate';
 import SuggestionContainer from './SuggestionContainer';
 import { NavBar } from './NavBar';
+import Footer from './Footer';
 import { GET_TASKS, GET_BACKLOG, GET_DAILIES, GET_ROLLOVER } from '../state/types'
+import Background from './UI/basic-af-black-coffee-wooden-table.jpg';
 
-class _Yesterday extends Component {
+class _Tomorrow extends Component {
 
-  componentDidMount(){
-    this.props.getTasks(localStorage.currentUserId, 'tasks', GET_TASKS)
-    this.props.getTasks(localStorage.currentUserId, 'backlog', GET_BACKLOG)
-    this.props.getTasks(localStorage.currentUserId, 'dailies', GET_DAILIES)
-    this.props.getTasks(localStorage.currentUserId, 'rollover', GET_ROLLOVER)
-  }
+  // componentDidMount(){
+  //   this.props.getDemoTasks(localStorage.currentUserId, 'tasks', GET_TASKS)
+  //   this.props.getDemoTasks(localStorage.currentUserId, 'backlog', GET_BACKLOG)
+  //   this.props.getDemoTasks(localStorage.currentUserId, 'dailies', GET_DAILIES)
+  //   this.props.getDemoTasks(localStorage.currentUserId, 'rollover', GET_ROLLOVER)
+  // }
 
   suggestTask = () => {
     let task = this.props.backlog.find(task => task.isSuggested)
@@ -28,21 +29,19 @@ class _Yesterday extends Component {
 
   render() {
     return (
-      <div>
-      <Container>
+      <main style={{height:'100%', width:'100%'}}>
+      <div style={{backgroundImage: `url(${Background})`, 'background-size':'cover', 'background-attachment':'fixed'}}>
+      <div style={{'text-align':'center'}}>
       < NavBar />
-        { localStorage.firstName &&
-          <p class='rainbow'>hi {localStorage.firstName} !!</p>
-        }
-      </Container>
-
-      <Grid flow="column" columns={3} gap="2px">
-        <Cell height={2} width={1}>
+      </div>
+      <div style={{'padding':'20px 60px 0px 60px'}}>
+      <Grid flow="column" columns={5} gap="2px">
+        <Cell height={2} width={2}>
           <div class='list-card'>
-            < TodaysDate />
+            < TomorrowsDate />
           </div>
         </Cell>
-        <Cell height={2} width={1}>
+        <Cell height={2} width={2}>
           <div class='list-card'>
             { this.props.dailies &&
             < DailyListContainer />
@@ -50,14 +49,14 @@ class _Yesterday extends Component {
           </div>
         </Cell>
         { this.suggestTask() &&
-          <Cell height={2} width={1}>
+          <Cell height={2} width={2}>
             <div class='list-card'>
-            < SuggestionContainer/>
+            < SuggestionContainer task={this.suggestTask()}/>
             </div>
           </Cell>
         }
 
-        <Cell height={20} width={2}>
+        <Cell height={8} width={3}>
           <div class='list-card'>
             { this.props.tasks &&
             < MainListContainer />
@@ -66,17 +65,20 @@ class _Yesterday extends Component {
         </Cell>
       </Grid>
 
-      <Grid columns={1} gap="2px">
-        <Cell width={1}>
-          <div class='list-card' style={{'margin-top':'10em'}}>
+      <Grid columns={5} gap="2px">
+        <Cell width={1}></Cell>
+        <Cell width={3}>
+          <div class='list-card' style={{'margin-top':'2em'}}>
             { this.props.backlog &&
             < BacklogContainer />
             }
           </div>
         </Cell>
       </Grid>
-
       </div>
+      <Footer/>
+      </div>
+      </main>
     );
   }
 }
@@ -88,4 +90,4 @@ const mapStateToProps = state => ({
   rollover: state.rollover
 })
 
-export const Yesterday = connect(mapStateToProps, actions)(_Yesterday)
+export const Tomorrow = connect(mapStateToProps, actions)(_Tomorrow)

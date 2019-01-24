@@ -58,7 +58,7 @@ class MainListContainer extends Component {
         </div>
 
         { !this.props.tasks.length ?
-          <h3>no tasks! add more :)</h3>
+          <div class='placeholder'>What's on your mind? Do a quick brain dump to clear your head.</div>
         : <div>
             { this.mapTasks() }
           </div>

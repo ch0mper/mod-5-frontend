@@ -25,6 +25,9 @@ export const reducer = function(currentState, action){
       newState.backlog = []
       history.push('/home')
     break;
+    case 'GO_TO_DEMO':
+      history.push('/demo')
+    break;
     case GET_TASKS:
       newState.tasks = action.payload
     break;

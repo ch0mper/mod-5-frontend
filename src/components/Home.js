@@ -9,7 +9,7 @@ import BacklogContainer from './BacklogContainer';
 import { TodaysDate } from './TodaysDate';
 import SuggestionContainer from './SuggestionContainer';
 import { NavBar } from './NavBar';
-import { Footer } from './Footer';
+import Footer from './Footer';
 import { GET_TASKS, GET_BACKLOG, GET_DAILIES, GET_ROLLOVER } from '../state/types'
 import Background from './UI/basic-af-black-coffee-wooden-table.jpg';
 
@@ -56,7 +56,7 @@ class _Home extends Component {
           </Cell>
         }
 
-        <Cell height={8} width={3}>
+        <Cell height={16} width={3}>
           <div class='list-card'>
             { this.props.tasks &&
             < MainListContainer />

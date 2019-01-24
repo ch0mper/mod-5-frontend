@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import history from '../state/history'
-import { NavBar } from './NavBar';
-import { Footer } from './Footer';
+import Footer from './Footer';
 import { Button } from './UI/StyledComponents'
 import Background from './UI/plant-on-white.jpg';
 

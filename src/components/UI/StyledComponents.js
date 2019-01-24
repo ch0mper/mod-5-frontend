@@ -28,6 +28,7 @@ export const Container = styled.div`
 export const Input = styled.input`
   border: 1px solid #72d4a2;
   border-radius: 4px;
+  margin-left: 16px;
   outline: none;
 :focus {
   background-color: #b9f4d6;
