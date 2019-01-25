@@ -31,7 +31,7 @@ class SuggestionContainer extends Component {
     return(
       <div>
         <h3>Just Try It!</h3>
-        <p style={{'margin-left':'1em', 'font-style':'italic'}}>You saved this on {this.showDate(this.props.task)}... try it today?</p>
+        <p class='placeholder' style={{'margin-left':'1em', 'font-size':'1em', 'margin-bottom':'.8em'}}>You saved this on {this.showDate(this.props.task)}... try it today?</p>
         {this.selectTask()}
       </div>
    );
