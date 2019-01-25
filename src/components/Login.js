@@ -1,37 +1,44 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { actions } from '../state/actions'
-import { Button, Container } from './UI/StyledComponents'
+import { Button, Input } from './UI/StyledComponents'
 
 class _Login extends Component {
 
   render() {
     return (
-      <Container>
+      <div style={{'text-align':'center'}}>
 
       {this.props.show &&
         <div class='modal'>
         <section class='modal-main'>
 
         <div style={{'text-align': 'right'}}><Button onClick={this.props.handleClose}>✕</Button></div>
+        <h3 style={{'margin-bottom':'1em'}}>welcome back!</h3>
         <form onSubmit={e => this.props.login(e)} >
-          <div>
+          <div style={{'margin-bottom':'1em'}}>
             <label>Email </label>
-            <input name="emailInput" type="text"/>
+            <Input name="emailInput" type="text"/>
           </div>
-          <div>
+          <div style={{'margin-bottom':'1em'}}>
             <label>Password </label>
-            <input name="passwordInput" type="password" />
+            <Input name="passwordInput" type="password" />
           </div>
-          <Button type="submit">Login</Button>
+          <Button type="submit" style={{'margin-bottom':'3em'}}>LET'S GO</Button>
         </form>
+
+        {this.props.error && <p>wrong login</p>}
 
         </section>
         </div>
       }
-      </Container>
+      </div>
     );
   }
 }
 
-export const Login = connect(null, actions)(_Login)
+const mapStateToProps = state => ({
+  error: state.loginError
+})
+
+export const Login = connect(mapStateToProps, actions)(_Login)

@@ -17,13 +17,18 @@ export const actions = {
         })
       })
       .then( res => res.json() )
-      // if result.error show stuff else
       .then( result => {
-        localStorage.setItem('token', result.token)
-        dispatch({
-          type: LOGIN,
-          payload: result
-        })
+        if (result.error) {
+          dispatch({
+            type: 'LOGIN_ERROR', payload: result
+          })
+        } else {
+          localStorage.setItem('token', result.token)
+          dispatch({
+            type: LOGIN,
+            payload: result
+          })
+        }
       })
     }
   },
@@ -31,6 +36,8 @@ export const actions = {
   signup(input){
     return function(dispatch, getState){
       input.preventDefault()
+      let name = input.target.firstNameInput.value
+      let firstNameCap = name.charAt(0).toUpperCase() + name.slice(1)
       fetch('http://localhost:5000/api/user/signup',{
         method:'POST',
         headers:{
@@ -38,7 +45,7 @@ export const actions = {
           Accept: 'application/json'
         },
         body:JSON.stringify({
-          firstName: input.target.firstNameInput.value,
+          firstName: firstNameCap,
           email: input.target.emailInput.value,
           password: input.target.passwordInput.value
         })
@@ -76,6 +83,50 @@ export const actions = {
       })
     }
   },
+
+  getDemoTasks(userId, typeOfTasks, action_type){
+    return function(dispatch, getState){
+      fetch(`http://localhost:5000/api/users/${userId}/demo/${typeOfTasks}`, {
+        headers: {
+          Authorization: `${localStorage.getItem('token')}`,
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        }
+      })
+      .then( res => res.json() )
+      .then( result => {
+        dispatch({
+          type: action_type,
+          payload: result
+        })
+      })
+    }
+  },
+
+  // create demo tasks
+
+  createTasksForDemo(userId, typeOfTasks){
+    return function(dispatch, getState){
+      fetch(`http://localhost:5000/api/users/${userId}/demo/${typeOfTasks}`, {
+        headers: {
+          Authorization: `${localStorage.getItem('token')}`,
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        }
+      })
+      .then( res => res.json() )
+      .then( result => {
+        dispatch({
+          type: 'GO_TO_DEMO',
+          payload: result
+        })
+      })
+    }
+  },
+
+  // app.get('/api/users/:id/demo/dailies', demo.recurringTasks)
+  // app.get('/api/users/:id/demo/rollover', demo.rolledOverTasks)
+  // app.get('/api/users/:id/demo/suggestion', demo.selectSuggestion)
 
   addTask(input, userId, recurringStatus, action_type){
     return function(dispatch, getState){

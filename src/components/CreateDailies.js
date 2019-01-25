@@ -35,7 +35,7 @@ class CreateDailies extends Component {
           <Input
             ref={this.inputRef}
             type="text"
-            placeholder="add a daily"
+            placeholder="add a daily habit!"
             onMouseEnter={() => {
               this.inputRef.current.focus()
             }}

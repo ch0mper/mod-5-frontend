@@ -6,6 +6,8 @@ import history from './state/history'
 import Index from './components/Index'
 import { Welcome } from './components/Welcome';
 import { Home } from './components/Home';
+import { Tomorrow } from './components/Tomorrow';
+import { Footer } from './components/Footer';
 
 class App extends Component {
   render() {
@@ -13,7 +15,9 @@ class App extends Component {
       <div>
         <Router history={history}>
           <Switch>
-            <Route exact path="/welcome" component={Welcome} />
+            <Route exact path="/welcome" render={() => (
+              !localStorage.token ? <Redirect to="/"/> : <Welcome/>
+            )}/>
             <Route exact path="/today" render={() => (
               !localStorage.token ? <Redirect to="/"/> : <Home/>
             )}/>
@@ -28,3 +32,9 @@ class App extends Component {
 }
 
 export default App;
+
+// <Route path="/demo" component={Tomorrow}/>
+
+// <Route path="/demo" render={() => (
+//   !localStorage.token ? <Redirect to="/"/> : <Tomorrow/>
+// )}/>

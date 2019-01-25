@@ -10,6 +10,9 @@ export const reducer = function(currentState, action){
       localStorage.firstName = action.payload.firstName
       history.push('/today')
     break;
+    case 'LOGIN_ERROR':
+      newState.loginError = action.payload.error
+    break;
     case SIGNUP:
       localStorage.currentUserId = action.payload.userId
       localStorage.firstName = action.payload.firstName
@@ -21,6 +24,9 @@ export const reducer = function(currentState, action){
       newState.dailies = []
       newState.backlog = []
       history.push('/home')
+    break;
+    case 'GO_TO_DEMO':
+      history.push('/demo')
     break;
     case GET_TASKS:
       newState.tasks = action.payload

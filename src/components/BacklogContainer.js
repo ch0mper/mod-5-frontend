@@ -23,8 +23,15 @@ class BacklogContainer extends Component {
   render() {
     return(
       <div>
-        <h3>backlog</h3>
-        { this.mapTasks() }
+        <h3>Later</h3>
+
+        { !this.props.tasks.length ?
+          <div class='placeholder' style={{'margin-bottom':'2em'}}>{localStorage.firstName}, save items to revisit later by clicking ⤹.</div>
+        : <div>
+            { this.mapTasks() }
+          </div>
+        }
+
      </div>
    );
   }

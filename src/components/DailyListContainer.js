@@ -19,7 +19,7 @@ class DailyListContainer extends Component {
   render() {
     return(
       <div>
-        <h3>dailies</h3>
+        <h3>{localStorage.firstName}'s Daily Habits</h3>
         { this.mapTasks() }
         < CreateDailies />
      </div>
