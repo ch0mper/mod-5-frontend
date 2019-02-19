@@ -11,6 +11,8 @@ Built with MERN stack, redux, styled-components.
 * Add a couple daily tasks to build your habits!
 * Features: track habits, roll over unfinished tasks, auto-suggest an item from "later".
 
+![](planner-gif.gif)
+
 Notes for the developer:
 * tasks are created at minus 6 hours from `new Date()` to match CST.
 * backend cron job times are in CST.
