@@ -1,11 +1,12 @@
 import { LOGIN, SIGNUP, LOGOUT, DELETE_TASK, UPDATE_TASK } from './types'
+const url = "104.196.168.109"
 
 export const actions = {
 
   login(input){
     return function(dispatch, getState){
       input.preventDefault()
-      fetch('http://localhost:5000/api/user/signin',{
+      fetch(`http://${url}:5000/api/user/signin`,{
         method:'POST',
         headers:{
           'Content-Type':'application/json',
@@ -38,7 +39,7 @@ export const actions = {
       input.preventDefault()
       let name = input.target.firstNameInput.value
       let firstNameCap = name.charAt(0).toUpperCase() + name.slice(1)
-      fetch('http://localhost:5000/api/user/signup',{
+      fetch(`http://${url}:5000/api/user/signup`,{
         method:'POST',
         headers:{
           'Content-Type':'application/json',
@@ -67,7 +68,7 @@ export const actions = {
 
   getTasks(userId, typeOfTasks, action_type){
     return function(dispatch, getState){
-      fetch(`http://localhost:5000/api/users/${userId}/${typeOfTasks}`, {
+      fetch(`http://${url}:5000/api/users/${userId}/${typeOfTasks}`, {
         headers: {
           Authorization: `${localStorage.getItem('token')}`,
           'Content-Type': 'application/json',
@@ -86,7 +87,7 @@ export const actions = {
 
   getDemoTasks(userId, typeOfTasks, action_type){
     return function(dispatch, getState){
-      fetch(`http://localhost:5000/api/users/${userId}/demo/${typeOfTasks}`, {
+      fetch(`http://${url}:5000/api/users/${userId}/demo/${typeOfTasks}`, {
         headers: {
           Authorization: `${localStorage.getItem('token')}`,
           'Content-Type': 'application/json',
@@ -107,7 +108,7 @@ export const actions = {
 
   createTasksForDemo(userId, typeOfTasks){
     return function(dispatch, getState){
-      fetch(`http://localhost:5000/api/users/${userId}/demo/${typeOfTasks}`, {
+      fetch(`http://${url}:5000/api/users/${userId}/demo/${typeOfTasks}`, {
         headers: {
           Authorization: `${localStorage.getItem('token')}`,
           'Content-Type': 'application/json',
@@ -131,7 +132,7 @@ export const actions = {
   addTask(input, userId, recurringStatus, action_type){
     return function(dispatch, getState){
       console.log(recurringStatus, input);;
-      fetch('http://localhost:5000/api/tasks',{
+      fetch(`http://${url}:5000/api/tasks`,{
         method:'POST',
         headers:{
           Authorization: `${localStorage.getItem('token')}`,
@@ -166,7 +167,7 @@ export const actions = {
   updateTaskContent(id, input){
     console.log('hit action creator', id, input)
     return function(dispatch, getState){
-      fetch(`http://localhost:5000/api/tasks/${id}`,{
+      fetch(`http://${url}:5000/api/tasks/${id}`,{
         method:'PATCH',
         headers:{
           Authorization: `${localStorage.getItem('token')}`,
@@ -191,7 +192,7 @@ export const actions = {
 
   toggleTaskComplete(id, isCompletedStatus, action_type){
     return function(dispatch, getState){
-      fetch(`http://localhost:5000/api/tasks/${id}`,{
+      fetch(`http://${url}:5000/api/tasks/${id}`,{
         method:'PATCH',
         headers:{
           Authorization: `${localStorage.getItem('token')}`,
@@ -220,7 +221,7 @@ export const actions = {
 
   toggleTaskPriority(id, priorityStatus, action_type){
     return function(dispatch, getState){
-      fetch(`http://localhost:5000/api/tasks/${id}`,{
+      fetch(`http://${url}:5000/api/tasks/${id}`,{
         method:'PATCH',
         headers:{
           Authorization: `${localStorage.getItem('token')}`,
@@ -245,7 +246,7 @@ export const actions = {
 
   deleteTask(id){
     return function(dispatch, getState){
-      fetch(`http://localhost:5000/api/tasks/${id}`,{
+      fetch(`http://${url}:5000/api/tasks/${id}`,{
         method:'DELETE',
         headers:{
           Authorization: `${localStorage.getItem('token')}`,
@@ -265,7 +266,7 @@ export const actions = {
 
   toggleTaskBacklog(id, backlogStatus, action_type){
     return function(dispatch, getState){
-      fetch(`http://localhost:5000/api/tasks/${id}`,{
+      fetch(`http://${url}:5000/api/tasks/${id}`,{
         method:'PATCH',
         headers:{
           Authorization: `${localStorage.getItem('token')}`,
